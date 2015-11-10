@@ -790,8 +790,9 @@ p{
 	}
 
 	#banner h3{
-		font-size: 30px;
+		font-size: 23px;
 		width: 80%;
+		bottom:50%;
 	}
 	.cbox{
 		padding-bottom: 27px;
