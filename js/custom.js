@@ -1,91 +1,113 @@
 jQuery(document).ready(function($) {
-		// price range start
-		$( "#slider-range" ).slider({
-		      range: true,
-		      min: 0,
-		      max: 200,
-		      create: function( event, ui ) {
-		      	$('#slider-range .ui-slider-handle:first').addClass('first-handle glyphicon glyphicon-triangle-left');
-		      	$('#slider-range .ui-slider-handle:last').addClass('second-handle glyphicon glyphicon-triangle-right');
-		      },
-		      values: [ 0, 100 ],
-		      slide: function( event, ui ) {		        
-		        $(".minVal").html("$"+ui.values[ 0 ]+"<span>/m</span>");
-		    	$(".maxVal").html("$"+ui.values[ 1 ]+"<span>/m</span>");
-		      }
+			$(".menuToggle").click(function(event) {
+				$(".mainNav").toggleClass("openMenu");
+				$("body").toggleClass("slideMenu")
+			});
+			var windowH = $(window).height()-$(".mainNav").height();
+			$("#banner").height(windowH);
+			$('#slides').superslides({
+        		hashchange: false,
+        		animation: 'fade',
+	            play: 5000
+      		});
+
+      		$('#slides').on('animated.slides', function () {
+      			
+      			var gi = $(this).superslides('current');
+      			$('#slides .slides-container li:eq('+gi+')').addClass("current");
+      		        
+      		});
+
+      		    // before slide animation begins
+      		$('#slides').on('animating.slides', function () {
+      		    var gi = $(this).superslides('current');
+      			$('#slides .slides-container li:eq('+gi+')').removeClass("current");
+      		});
+
+
+			$(window).scroll(function(e) {
+		        if($(window).scrollTop()>15){
+					$("body").addClass("fixedNav");
+				}else{
+					$("body").removeClass("fixedNav");
+				}
 		    });
-		    
-		    $(".minVal").html("$" + $( "#slider-range" ).slider( "values", 0 )+"<span>/m</span>");
-		    $(".maxVal").html("$" + $( "#slider-range" ).slider( "values", 1 )+"<span>/m</span>");
-		// price range end
-		$('.dropdown-toggle').dropdown();
-		//open project details on item click start
-		$(".item.active").click(function(event) {
+		    $(window).resize(function(event) {
+		    	var windowH = $(window).height()-$(".mainNav").height();
+		    	$("#banner").height(windowH);
+		    });
+		 	  $('.clientList').owlCarousel({
+		        autoPlay: 3000,
+		        items : 4,
+		        itemsDesktop : [1199,3],
+		        itemsDesktopSmall : [979,3]
+		      });
+
+			$('.form input, .form1 input').attr('data-value', $(this).val()).on('keyup', function() {
+				var getVal = $(this).val();
+				if(getVal == ""){
+					$(this).prev('label').removeClass("showLab");
+				}else{
+				    $(this).prev('label').addClass("showLab");	
+				}		
 			
-			closeDetails()
-			if($(this).hasClass('selected')){
-			    $(".item").removeClass('selected');
-			    closeDetails();
-		    }else{
-		    	$(".item").removeClass('selected');
-		    	$(this).addClass("selected");
-		    	openDetails();
+			});	
+			$(".resgisterMenu a, .scrollBotton a").click(function(event) {
+				event.preventDefault();
+				var getTarget = $(this).attr("href");
+				$("html, body").animate({scrollTop:($(getTarget).offset().top - $(".mainNav").height())}, "slow");
+				//$("body,html").scrollTop()
+			});		
+		 }); 
 
+		//document ready end
+		$(window).load(function() {
+			//alert("window load")
+		  $('.flexslider').flexslider({
+		    animation: "fade",
+		    slideshow:true,
+		    controlNav:false,
+		    directionNav:false
+		  });
+		});
+		new WOW().init();
+	// google map start
+
+
+		function initMap() {
+		  var center = {lat: 12.9566192, lng: 77.7004064}
+		  var map = new google.maps.Map(document.getElementById('mapSection'), {
+		    zoom: 15,		    
+		    center: center,
+		    scrollwheel: false
+		  });
+			var styles = [
+		    {
+		      stylers: [       
+		        { saturation: -100 }
+		      ]
 		    }
-		});
-		//open project details on item click end
+		  ];
+		  var goldStar = {
+		    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+		    fillColor: 'yellow',
+		    fillOpacity: 0.8,
+		    scale: 1,
+		    strokeColor: 'gold',
+		    strokeWeight: 14
+		  };
+		  map.setOptions({styles: styles});
 
-		$("#sidebar").hover(function() {
-			$(this).addClass("overflowAuto");
-		}, function() {
-			$(this).removeClass("overflowAuto");
-		});
+		  $(window).resize(function() {
+		     map.setCenter(center);
+		  });
 
-		// close project details start 
-		$(".closeProject").click(function(){
-			closeDetails();
-			$(".item").removeClass('selected');
-		});
-		// close project details end
-		$(".listView").click(function(event) {
-			event.preventDefault();
+			var image = "images/mapMarker.png";
+		  	var marker = new google.maps.Marker({
+			    position: map.getCenter(),
+			    icon: image,
+			    map: map,
+			    animation: google.maps.Animation.BOUNCE
+			 });
 
-			$("#main").addClass("fullList");
-			$(this).parent("li").addClass("active");
-			$(".gridView").parent("li").removeClass("active");
-		});
-		$(".gridView").click(function(event) {
-			event.preventDefault();
-			$("#main").removeClass("fullList");
-			$(this).parent("li").addClass("active");
-			$(".listView").parent("li").removeClass("active");
-		});
-		$(".showSide").click(function(e){
-			if($(window).width()<768){
-				e.preventDefault();
-				$(this).toggleClass("hideSidebar");
-				$("#sidebar").toggleClass('showSidebar');
-				$(".proDetailsOverlay").toggleClass("overLayShow");
-				$("#main").toggleClass('fullScreen');
-			}
-		});
-		$(".proDetailsOverlay").click(function(event) {
-			if($(window).width()<768){
-				$(".showSide").toggleClass("hideSidebar");;
-				$("#sidebar").toggleClass('showSidebar');
-				$(this).toggleClass("overLayShow");
-				$("#main").toggleClass('fullScreen');
-			}
-		});
-		$(".closeBtn").click(function(){
-			$(".proDetailsOverlay").trigger("click");
-		})
-	});
-	function closeDetails(){
-		var getWidth = $("#projectDetails").outerWidth();
-		$("#projectDetails").animate({"right":"-135%"});
-	}
-	function openDetails(){
-		var getWidth = $("#projectDetails").outerWidth();
-		$("#projectDetails").animate({"right":0});
-	}
+		}
