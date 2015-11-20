@@ -1,0 +1,33 @@
+.container{
+	width:500px;
+	border:2px solid #333333;
+	padding: 15px;
+	margin:0 auto;
+	font-family: arial;
+	transition:all 0.5s linear;
+}
+.container label{
+	display: block;
+	padding: 5px;
+	border: #333333 2px solid;
+	margin-bottom: 5px;
+	font-size: 15px;
+	overflow: hidden;
+	font-weight: bold;
+}
+.fruittrue{
+	background-color: #04D70E;
+	color: #ffffff;
+}
+.container label span{
+	float: right;
+}
+.container label input[type = "checkbox"]{
+	opacity: 0;
+}
+.container h3{
+	text-align: center;
+}
+.noDisplay{
+	border:dashed 2px #333333;
+}

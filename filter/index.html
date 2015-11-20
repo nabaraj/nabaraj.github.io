@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="filterApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="js/angularjs.js"></script>
+</head>
+<body ng-controller="priceCalculate">{{froutsArray}}{{testClass}}
+<input type="checkbox" ng-model="testClass">
+	<div class="container" ng-class="{display:testClass, noDisplay:!testClass}">
+		<div style="text-align:center;">Add Item</div>
+		
+			<label for="{{fruit.name}}" ng-repeat="fruit in froutsArray" class="fruit{{fruit.selected}}">
+				{{fruit.name}}
+				<input type="checkbox" id="{{fruit.name}}" ng-checked="addPrice()" ng-model="fruit.selected">
+				<span>Rs.{{fruit.price}}</span>
+			</label>
+		
+		
+		<h3>Total Rs. {{froutsArray | addPrice:'price'}}</h3>
+
+	</div>
+	<script>
+	var app = angular.module('filterApp', [])
+	.run(function() { // instance-injector
+  console.log("run");
+});
+	app.filter('addPrice',function() {
+		return function(data, key){			
+			if (typeof (data) === 'undefined' && typeof (key) === 'undefined') {
+            	return "";
+        	}
+			var sum = 0;
+			for(var i = 0; i< data.length; i++){
+				 if(data[i]["selected"]==true){				
+				 	sum = sum+parseInt(data[i][key]);				
+				}
+			}
+			return (sum==0) ?"":sum;
+		};
+	});
+	app.controller('priceCalculate', function($scope){
+		$scope.froutsArray = [{
+			name:"apple",
+			price:200,
+			selected:true
+		},{
+			name:"grapes",
+			price:150,
+			selected:false
+		},{
+			name:"banana",
+			price:60,
+			selected:false
+		},{
+			name:"orange",
+			price:70,
+			selected:false
+		}];
+		
+	});
+	</script>
+</body>
+</html>
