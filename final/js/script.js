@@ -208,19 +208,27 @@ $(document).ready(function(){
 	jQuery.scrollSpeed(100, 800);
 	resizeBanner();
 	$(".banner-slide div:first-child").addClass("current");
-	$(".banner-slide").customSlide();
+	$(".banner-slide").customSlide({
+		//"autoHeight":true
+	});
 	$(".testimonialsSlider").customSlide({
-		"timerConunt":10000,
+		"timerCount":10000,
 		"autoHeight":true
 	});
 	var homeHeight = $("#home").outerHeight();
 	var bannerHeight =$(".bannerbottom").height();
 
-	$("html, body").animate({
-       scrollTop: 0
-    }, 600);
-
+	
 	initParticles();
+
+	$(".requestQlink").click(function(e){
+		e.preventDefault();
+		var getTarget = $(this).attr("href");
+		$('html,body').animate({
+					scrollTop: $(getTarget).offset().top-$("#main-header").height()
+				}, 2000);
+				return false;
+	})
 
 	$('#mainNav a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
@@ -240,7 +248,7 @@ $(document).ready(function(){
 	$(window).scroll(function(e){		
 		//console.log($(this).scrollTop(),homeHeight);
 		var scrollTop = $(this).scrollTop();
-		if( scrollTop > (homeHeight-(bannerHeight+80))){
+		if( scrollTop > (homeHeight-(bannerHeight+200))){
 			$("body").addClass("fixedNav");
 		}else{
 			$("body").removeClass("fixedNav");
@@ -249,39 +257,7 @@ $(document).ready(function(){
 
 	});
 
-	var aChildren = $("#mainNav li").children(); // find the a children of the list items
-	    var aArray = []; // create the empty aArray
-	    for (var i=0; i < aChildren.length; i++) {    
-	        var aChild = aChildren[i];
-	        var ahref = $(aChild).attr('href');
-	        aArray.push(ahref);
-	    } // this for loop fills the aArray with attribute href values
-console.log(aArray);
-	    $(window).scroll(function(){
-	        var windowPos = $(window).scrollTop()+$("#main-header").height(); // get the offset of the window from the top of page
-	        var windowHeight = $(window).height(); // get the height of the window
-	        var docHeight = $(document).height();
 
-	        for (var i=0; i < aArray.length; i++) {
-	            var theID = aArray[i];
-	            var divPos = $(theID).offset().top; // get the offset of the div from the top of page
-	            var divHeight = $(theID).height(); // get the height of the div in question
-	            console.log(divPos);
-	            if (windowPos >= divPos && windowPos < (divPos + divHeight)) {
-	                $("#mainNav a[href='" + theID + "']").parents("li").addClass("current");
-	            } else {
-	                $("#mainNav a[href='" + theID + "']").parents("li").removeClass("current");
-	            }
-	        }
-
-	        if(windowPos + windowHeight == docHeight) {
-	            if (!$("#mainNav li:last-child").hasClass("current")) {
-	                var navActiveCurrent = $(".current a").attr("href");
-	                $("#mainNav a[href='" + navActiveCurrent + "']").parents("li").removeClass("current");
-	                $("#mainNav li:last-child").addClass("current");
-	            }
-	        }
-	    });
 
 	$(window).resize(function(){
 		resizeBanner();
@@ -341,7 +317,14 @@ console.log(aArray);
 	// 					.setClassToggle("#portfolio", "inView")
 	// 					.addTo(controller);					
 });
-
+$(window).load(function(){
+	$("html, body").animate({
+       scrollTop: 0
+    }, 600, function(){
+    	scrollAnimate();
+    });
+	
+})
 function toggleMenuClass(sectionId){
 	$("#mainNav > li").removeClass("current");
 	if(typeof sectionId!=='undefined'){
@@ -363,7 +346,7 @@ function bannerSlide(elm){
 $.fn.customSlide = function(options) {
  	// Establish our default settings
     var settings = $.extend({
-        timerConunt         : 5000,
+        timerCount         : 5000,
         autoHeight:false
     }, options);
     return this.each(function() {
@@ -383,7 +366,7 @@ $.fn.customSlide = function(options) {
  			var nextElem = (currentItem.next().length===0) ? elm.find("div:first-child") : currentItem.next();
  			currentItem.removeClass("current");
  			nextElem.addClass("current");
- 			setTimeout(function(){bannerSlide(elm)},settings.timerConunt);
+ 			setTimeout(function(){bannerSlide(elm)},settings.timerCount);
         }())
  		
     });
@@ -391,9 +374,9 @@ $.fn.customSlide = function(options) {
 };
 function resizeBanner(){
 
-	if (!Modernizr.touch && $(window).height() > 500){
+	//if (!Modernizr.touch && $(window).height() > 500){
 		$(".banner-slide").height($(window).height());
-	}
+	//}
 }
 function initParticles() {
     particlesJS('contact', {
@@ -442,5 +425,43 @@ function initParticles() {
         },
         retina_detect: true
     });
+}
+function scrollAnimate(){
+	var aChildren = $("#mainNav li").children(); // find the a children of the list items
+	    var aArray = []; // create the empty aArray
+	    // for (var i=0; i < $(".section").length; i++) {    
+	    //     // var aChild = aChildren[i];
+	    //     // var ahref = $(aChild).attr('href');
+	    //     aArray.push(ahref);
+	    // } // this for loop fills the aArray with attribute href values
+	    $(".sectionBox").each(function(){
+	    	aArray.push($(this).attr("id"));
+	    });
+	    $(window).scroll(function(){
+	        var windowPos = $(window).scrollTop()+$("#main-header").height(); // get the offset of the window from the top of page
+	        var windowHeight = $(window).height(); // get the height of the window
+	        var docHeight = $(document).height();
+	        //console.log(windowPos,docHeight);
+	        for (var i=0; i < aArray.length; i++) {
+	            var theID = "#"+aArray[i];
+	            var divPos = $(theID).offset().top; // get the offset of the div from the top of page
+	            var divHeight = $(theID).height(); // get the height of the div in question
+	            if (windowPos+(windowHeight/2) >= divPos && windowPos+(windowHeight/2) < (divPos + divHeight)) {
+	            	$(theID).addClass("inView");
+	            	$("#mainNav li").removeClass("current");
+	                $("#mainNav a[href='" + theID + "']").parents("li").addClass("current");
+	            } else {
+	                $("#mainNav a[href='" + theID + "']").parents("li").removeClass("current");
+	            }
+	        }
+
+	        if(windowPos + windowHeight == docHeight) {
+	            if (!$("#mainNav li:last-child").hasClass("current")) {
+	                var navActiveCurrent = $(".current a").attr("href");
+	                $("#mainNav a[href='" + navActiveCurrent + "']").parents("li").removeClass("current");
+	                $("#mainNav li:last-child").addClass("current");
+	            }
+	        }
+	    });
 }
 //custom js end

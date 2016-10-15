@@ -20,7 +20,7 @@
 						<ul class="list-inline top-details">
 							<li><span class="phoneNo">P: 90909090909</span></li>
 							<li><span>E: <a href="mailto:sales.webexcellenz@gmail.com" class="mailto webexcellenz@gmail com">sales.webexcellenz@gmail.com</a></span></li>
-							<li><a href="#" class="requestQlink">START PROJECT</a></li>
+							<li><a href="#contact" class="requestQlink">START PROJECT</a></li>
 						</ul>					
 					</div>
 				</div>
@@ -51,13 +51,13 @@
 				</div><!-- /.container-fluid -->
 			</nav>
 		</header>
-		<section id="home" class="banner">
+		<section id="home" class="banner sectionBox">
 			<div class="overlaySlider"></div>
 			<div class="banner-slide">
-				<div><img src="images/banner/banner1.jpg" alt="banner1" class="img-responsive"></div>
-				<div><img src="images/banner/banner2.jpg" alt="banner1" class="img-responsive"></div>
-				<div><img src="images/banner/banner3.jpg" alt="banner1" class="img-responsive"></div>
-				<div><img src="images/banner/banner4.jpg" alt="banner1" class="img-responsive"></div>		  
+				<div style="background-image:url(images/banner/banner1.jpg);"><img src="images/banner/banner1.jpg" alt="banner1" class="hidden"></div>
+				<div style="background-image:url(images/banner/banner2.jpg);"><img src="images/banner/banner2.jpg" alt="banner2" class="hidden" class=""></div>
+				<div style="background-image:url(images/banner/banner3.jpg);"><img src="images/banner/banner3.jpg" alt="banner3" class="hidden" class=""></div>
+				<div style="background-image:url(images/banner/banner4.jpg);"><img src="images/banner/banner4.jpg" alt="banner4" class="hidden" class=""></div>		  
 			</div>
 			<div class="container">
 				<div class="bannerContent text-center">	
@@ -67,7 +67,7 @@
 			</div>
 			<img src="images/banner-bottom.png" alt="bannerBottom" class="img-responsive bannerbottom">
 		</section>
-		<section id="about-us" class="section">
+		<section id="about-us" class="section sectionBox">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-8 col-sm-offset-2">
@@ -77,7 +77,7 @@
 				</div>
 			</div>		
 		</section>
-		<section id="services" class="section">
+		<section id="services" class="section sectionBox">
 			<div class="sectionOverflow">
 				<div class="container">
 					<h2 class="sectionHead text-center">Services</h2>
@@ -119,32 +119,56 @@
 				</div>
 			</div>
 		</section>
-		<section id="priceTable" class="section">
+		<section id="workProcess" class="section sectionBox">
+			<div class="container">
+				<h2 class="sectionHead text-center">Work Process</h2>
+				<ul class="processList list-inline text-center">
+					<li class="process1">
+						<span class="processBox">
+							<i class="fa fa-pencil" aria-hidden="true"></i>
+						</span>
+						<h5>Think</h5>
+					</li>
+					<li class="process2"><span class="processBox"><i class="fa fa-paint-brush" aria-hidden="true"></i></span>
+						<h5>Design</h5>
+					</li>
+					<li class="process3"><span class="processBox"><i class="fa fa-cogs" aria-hidden="true"></i></span>
+						<h5>Deploy</h5>
+					</li>
+					<li class="process4"><span class="processBox"><i class="fa fa-level-up" aria-hidden="true"></i></span>
+						<h5>Execute</h5>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section id="priceTable" class="section sectionBox">
 			<div class="container">
 				<h2 class="sectionHead text-center">
 					Price Table
 				</h2>
 				<!-- pricing table start -->
-				<div class="priceTablecontainer text-center">
-					<div class="pricing-table">
-						<div class="pricing-table-header">
-							<h2>Personal Site</h2>
-							<h3>$15/month</h3>
-						</div>
-						<div class="pricing-table-space"></div>
-						<div class="pricing-table-features">
-							<p><strong>50</strong> Email Addresses</p>
-							<p><strong>35GB</strong> of Storage</p>
-							<p><strong>40</strong> Databases</p>
-							<p><strong>10</strong> Domains</p>
-							<p><strong>24/7 Unlimited</strong> Support</p>
-						</div>
-						<div class="pricing-table-sign-up">
-							<p><a href="http://bloggingbolt.blogspot.com">Sign Up Now</a></p>
+				<div class="priceTablecontainer text-center row">
+					<div class="col-sm-4 col-xs-12">
+						<div class="pricing-table">
+							<div class="pricing-table-header">
+								<h2>Personal Site</h2>
+								<h3>$15/month</h3>
+							</div>
+							<div class="pricing-table-space"></div>
+							<div class="pricing-table-features">
+								<p><strong>50</strong> Email Addresses</p>
+								<p><strong>35GB</strong> of Storage</p>
+								<p><strong>40</strong> Databases</p>
+								<p><strong>10</strong> Domains</p>
+								<p><strong>24/7 Unlimited</strong> Support</p>
+							</div>
+							<div class="pricing-table-sign-up">
+								<p><a href="http://bloggingbolt.blogspot.com">Sign Up Now</a></p>
+							</div>
 						</div>
 					</div>
-
-					<div class="pricing-table pricing-table-highlighted">
+					<div class="col-sm-4 col-xs-12">
+						<div class="pricing-table pricing-table-highlighted">
 						<div class="pricing-table-header">
 							<h2>Small Business</h2>
 							<h3>$59/month</h3>
@@ -163,23 +187,25 @@
 						<div class="pricing-table-sign-up">
 							<p><a href="http://bloggingbolt.blogspot.com">Sign Up Now</a></p>
 						</div>
+						</div>
 					</div>
-
-					<div class="pricing-table">
-						<div class="pricing-table-header">
-							<h2>Corporate Site</h2>
-							<h3>$85/month</h3>
-						</div>
-						<div class="pricing-table-space"></div>
-						<div class="pricing-table-features">
-							<p><strong>Unlimited</strong> Email Addresses</p>
-							<p><strong>85GB</strong> of Storage</p>
-							<p><strong>Unlimited</strong> Databases</p>
-							<p><strong>50</strong> Domains</p>
-							<p><strong>24/7 Unlimited</strong> Support</p>
-						</div>
-						<div class="pricing-table-sign-up">
-							<p><a href="http://bloggingbolt.blogspot.com">Sign Up Now</a></p>
+					<div class="col-sm-4 col-xs-12">
+						<div class="pricing-table">
+							<div class="pricing-table-header">
+								<h2>Corporate Site</h2>
+								<h3>$85/month</h3>
+							</div>
+							<div class="pricing-table-space"></div>
+							<div class="pricing-table-features">
+								<p><strong>Unlimited</strong> Email Addresses</p>
+								<p><strong>85GB</strong> of Storage</p>
+								<p><strong>Unlimited</strong> Databases</p>
+								<p><strong>50</strong> Domains</p>
+								<p><strong>24/7 Unlimited</strong> Support</p>
+							</div>
+							<div class="pricing-table-sign-up">
+								<p><a href="http://bloggingbolt.blogspot.com">Sign Up Now</a></p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -282,7 +308,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="no-padding section" id="portfolio">
+		<section class="no-padding section sectionBox" id="portfolio">
 			<div class="container-fluid">
 				<h2 class="sectionHead text-center">Our Work</h2>
 				<div class="row no-gutter popup-gallery">
@@ -411,7 +437,7 @@
 			
 		</section>
 
-		<section id="testimonials" class="section">
+		<section id="testimonials" class="section sectionBox">
 			<div class="container">
 				<h2 class="sectionHead text-center">Happy Clients</h2>
 				<h3 class="subHead text-center">People who love & appreciate our works</h3>
@@ -441,7 +467,7 @@
 			<img src="images/contact-top.png" class="contact-top" alt="">
 		</section>
 
-		<section id="contact" class="">
+		<section id="contact" class="section sectionBox">
 
 			<div class="container" id="container">
 				<div class="row">
@@ -452,16 +478,16 @@
 								<div class="wpb_wrapper">
 									<ul class="contact-info list-unstyled">
 										<li>
-											<address><span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>1600 Amphitheatre Parkway, Mountain View, CA 94043, US</address>
+											<address><span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</address>
 										</li>
 										<li>
-											<address><span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="mailto:">info@coderpixel.com</a></address>
+											<address><span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span><a href="mailto:sales.webexcellenz@gmail.com">sales.webexcellenz@gmail.com</a></address>
 										</li>
 										<li>
-											<address><span class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></span><a href="#">+1-202-555-0167</a></address>
+											<address><span class="icon"><i class="fa fa-mobile" aria-hidden="true"></i></span><a href="#">90909090909</a></address>
 										</li>
 										<li>
-											<address><span class="icon"><i class="fa fa-globe" aria-hidden="true"></i></span><a href="#">www.coderpixel.com</a></address>
+											<address><span class="icon"><i class="fa fa-globe" aria-hidden="true"></i></span><a href="http://www.webexcellenz.com/">www.webexcellenz.com</a></address>
 										</li>
 									</ul>
 								</div>
