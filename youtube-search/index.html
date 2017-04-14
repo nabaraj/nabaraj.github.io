@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+    <style>
+        .visible-hidden{
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" style="padding-top:100px;">
+    <div id="buttons">
+        <div class="form-group">
+            <div class="input-group">
+                <input id="query" placeholder="say something to search in youtube" class="form-control" value='' type="text"/>
+                <span class="glyphicon glyphicon-bullhorn input-group-addon" aria-hidden="true"></span>
+            </div>
+            <button id="search-button" style="display:none;"  onclick="keyWordsearch()">Search</button>
+        </div>
+        <div id="container" class="visible-hidden">
+            <h1>Search Results</h1>
+            <div class="vidoeList" id="results"></div>
+        </div>
+    </div>
+        <script>
+            //$(document).ready(function(){            
+                if (annyang) {
+                    console.log(annyang);
+                    var commands = {
+                        // annyang will capture anything after a splat (*) and pass it to the function.
+                        // e.g. saying "Show me Batman and Robin" is the same as calling showFlickr('Batman and Robin');
+                        //'show me *tag': showFlickr,
+
+                        // A named variable is a one word variable, that can fit anywhere in your command.
+                        // e.g. saying "calculate October stats" will call calculateStats('October');
+                        //'calculate :month stats': calculateStats,
+
+                        // By defining a part of the following command as optional, annyang will respond to both:
+                        // "say hello to my little friend" as well as "say hello friend"
+                        '*val': function(val){
+                            console.log(val);
+                            $("#query").val(val);
+                            keyWordsearch();
+                        }
+                    };
+                    
+                    // Add our commands to annyang
+                    annyang.addCommands(commands);
+                    // Start listening. You can call this here, or attach this call to an event, button, etc.
+                    annyang.start();
+                }
+            //})
+            function keyWordsearch() {
+                gapi.client.setApiKey('AIzaSyBDZGIuQA3XuZfjjK-J7DSQrB80I5TEclQ');
+                gapi.client.load('youtube', 'v3', function () {
+                    makeRequest();
+                });
+            }
+            function makeRequest() {
+                var q = $('#query').val();
+                var request = gapi.client.youtube.search.list({
+                    q: q,
+                    part: 'snippet',
+                    maxResults: 10
+                });
+                request.execute(function (response) {
+                    $('#results').empty();
+                    $("#container").removeClass("visible-hidden");
+                    console.log(response);
+                    var srchItems = response.result.items;
+                    $.each(srchItems, function (index, item) {
+                        vidTitle = item.snippet.title;
+                        vidThumburl = item.snippet.thumbnails.default.url;
+                        vidThumbimg = '<div class="well"><h4>'+vidTitle+'</h4><div class="embed-responsive embed-responsive-16by9"><iframe width="560" height="315" class="embed-responsive-item" src="https://www.youtube.com/embed/'+item.id.videoId+'?rel=0" frameborder="0" allowfullscreen></iframe></div></div>';
+
+                        $('#results').append(vidThumbimg);
+                    })
+                })
+            }
+        </script>
+        
+        <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady">
+
+        </script>
+</body>
+
+</html>
