@@ -1,0 +1,222 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:700);
+body, html {
+	overflow: hidden;
+}
+.bodyLayer {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	position: absolute;
+}
+.numList li {
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	text-align: center;
+	line-height: 40px;
+	margin-left: -20px;
+	transform-origin: center center;
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	cursor: pointer;
+	z-index: 50;
+	margin-top: -20px;
+}
+.smart-object {
+	background-color: #ffffff;
+}
+.pClass .smart-object {
+	display: inline-block;
+	letter-spacing: -1px;
+}
+.childClass .smart-object {
+	border-radius: 8px;
+	width: 6px;
+	height: 9px;
+	/*border:2px solid rgb(215, 34, 41);*/
+	border: 2px solid #000000;
+	margin: 0 auto;
+	display: inline-block;
+	vertical-align: middle;
+	transition: background 0.2s ease-in-out;
+	-webkit-transition: background 0.2s ease-in-out;
+}
+.childClass:hover .smart-object, .childClass.active .smart-object {
+	background: #d72229;
+}
+.pClass {
+	font-family: 'Oswald', sans-serif;
+	text-align: center;
+	font-weight: bold;
+	font-size: 40px;
+}
+ul {
+	height: 400px;
+}
+.circleBox {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 3000px;
+	height: 3000px;
+	z-index:15;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);/*margin-left: -1500px;
+	margin-top: -1500px;*/
+}
+.circleBox.load {
+/*margin: 0 auto !important;
+	position: relative;
+	top: auto;
+	left: auto;*/
+}
+.pClass.red {
+	color: #d72229;
+}
+.childClass.red .smart-object {
+	border-color: #d72229;
+}
+.svgBox {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+#arc {
+	transition: all 0.3s ease-in;
+	-webkit-transition: all 0.3s ease-in;
+}
+.portFolioList, .ibox {
+	position: absolute;
+	z-index: 11;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+}
+.portrait img {
+	max-height: 100%;
+	width: auto;
+	display: block;
+	margin: 0 auto;
+}
+.landscape img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+	margin: 0 auto;
+}
+.portFolioList > ul > li {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	z-index: 2;
+}
+.portFolioList > ul > li img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	cursor: pointer;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.postMeta {
+	position: absolute;
+	bottom: 50px;
+	left: 50px;
+}
+/*.postDetails{
+	display:none;
+	}*/
+.portfolioImage {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+.portfolioImage img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+.portfolioImage .sideAlign img {
+	position: absolute;
+	top: 0;
+	left: auto;
+	right: 0;
+	-webkit-transform: translate(0, 0);
+	transform: translate(0, 0);
+}
+.ibox {
+	transition: all 0.8s ease-in-out;
+	-moz-transition: all 0.8s ease-in-out;
+}
+.postList {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.postList li {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	right: 100%;
+	opacity: 0;
+}
+.postList li .container {
+	/*position:relative;*/
+	height: 100%;
+}
+.postList li img {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+}
+.postList li.presentList {
+	left: 0;
+}
+.presentList .container {
+	position: relative;
+}
+.showDetails {
+	z-index: 150;
+}
+.showDetails li {
+	opacity: 1;
+}
+ @media (max-width:768px) {
+.pClass {
+	text-align: center;
+	font-weight: bold;
+	font-size: 17px;
+	line-height: 20px;
+}
+.numList li {
+	width: 20px;
+	height: 20px;
+	margin-left: -8px;
+}
+.childClass .smart-object {
+	width: 4px;
+	height: 6px;
+	border-width: 1px;
+}
+.svgBox {
+	display: none;
+}
+}
