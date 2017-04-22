@@ -1,0 +1,127 @@
+<!--Validation-->
+    <md-card fxFlex="100">
+  <md-card-title>List</md-card-title>
+  <md-card-subtitle></md-card-subtitle>
+  <md-card-content>
+    <ngx-datatable 
+      *ngIf="listWithCount" class="material" 
+      [rows]="rows" 
+      [columnMode]="'force'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [rowHeight]="'auto'" 
+      [externalPaging]="true" 
+      [count]="listWithCount.count" 
+      [offset]="paginationData.currentPage - 1"
+      [limit]="paginationData.maxSize" 
+      (page)='onPageChanged($event)'>
+      <ngx-datatable-column name="Actions">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button md-icon-button md-button-sm (click)="edit(row)" [attr.aria-label]="edit"><md-icon>edit</md-icon></button>
+          <button md-icon-button md-button-sm (click)="delete(row.id)" [attr.aria-label]="delete"><md-icon>delete</md-icon></button>
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--id-->
+      
+      <ngx-datatable-column name="id"></ngx-datatable-column>
+      
+      <!--afterDate-->
+      
+      <ngx-datatable-column name="afterDate">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{ value | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--age-->
+      
+      <ngx-datatable-column name="age"></ngx-datatable-column>
+      
+      <!--beforeDate-->
+      
+      <ngx-datatable-column name="beforeDate">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{ value | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--containsDPT-->
+      
+      <ngx-datatable-column name="containsDPT"></ngx-datatable-column>
+      
+      <!--createdBy-->
+      
+      <ngx-datatable-column name="createdBy"></ngx-datatable-column>
+      
+      <!--createdDate-->
+      
+      <ngx-datatable-column name="createdDate">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{ value | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--creditCard-->
+      
+      <ngx-datatable-column name="creditCard"></ngx-datatable-column>
+      
+      <!--date-->
+      
+      <ngx-datatable-column name="date">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{ value | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--email-->
+      
+      <ngx-datatable-column name="email"></ngx-datatable-column>
+      
+      <!--integer-->
+      
+      <ngx-datatable-column name="integer"></ngx-datatable-column>
+      
+      <!--isActive-->
+      
+      <ngx-datatable-column name="isActive"></ngx-datatable-column>
+      
+      <!--phone-->
+      
+      <ngx-datatable-column name="phone"></ngx-datatable-column>
+      
+      <!--startsWithDPT-->
+      
+      <ngx-datatable-column name="startsWithDPT"></ngx-datatable-column>
+      
+      <!--string-->
+      
+      <ngx-datatable-column name="string"></ngx-datatable-column>
+      
+      <!--uid-->
+      
+      <ngx-datatable-column name="uid"></ngx-datatable-column>
+      
+      <!--updatedBy-->
+      
+      <ngx-datatable-column name="updatedBy"></ngx-datatable-column>
+      
+      <!--updatedDate-->
+      
+      <ngx-datatable-column name="updatedDate">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{ value | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--url-->
+      
+      <ngx-datatable-column name="url"></ngx-datatable-column>
+      
+      <!--zip-->
+      
+      <ngx-datatable-column name="zip"></ngx-datatable-column>
+       
+    </ngx-datatable>
+  </md-card-content>
+</md-card>

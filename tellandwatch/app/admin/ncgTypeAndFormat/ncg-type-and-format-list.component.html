@@ -1,0 +1,67 @@
+<!--NcgTypeAndFormat-->
+    <md-card fxFlex="100">
+  <md-card-title>List</md-card-title>
+  <md-card-subtitle></md-card-subtitle>
+  <md-card-content>
+    <ngx-datatable 
+      *ngIf="listWithCount" class="material" 
+      [rows]="rows" 
+      [columnMode]="'force'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [rowHeight]="'auto'" 
+      [externalPaging]="true" 
+      [count]="listWithCount.count" 
+      [offset]="paginationData.currentPage - 1"
+      [limit]="paginationData.maxSize" 
+      (page)='onPageChanged($event)'>
+      <ngx-datatable-column name="Actions">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button md-icon-button md-button-sm (click)="edit(row)" [attr.aria-label]="edit"><md-icon>edit</md-icon></button>
+          <button md-icon-button md-button-sm (click)="delete(row.id)" [attr.aria-label]="delete"><md-icon>delete</md-icon></button>
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--id-->
+      
+      <ngx-datatable-column name="id"></ngx-datatable-column>
+      
+      <!--someArray-->
+      
+      <ngx-datatable-column name="someArray"></ngx-datatable-column>
+      
+      <!--someBoolean-->
+      
+      <ngx-datatable-column name="someBoolean"></ngx-datatable-column>
+      
+      <!--someIntegerInt32-->
+      
+      <ngx-datatable-column name="someIntegerInt32"></ngx-datatable-column>
+      
+      <!--someNumber-->
+      
+      <ngx-datatable-column name="someNumber"></ngx-datatable-column>
+      
+      <!--someNumberDouble-->
+      
+      <ngx-datatable-column name="someNumberDouble"></ngx-datatable-column>
+      
+      <!--someString-->
+      
+      <ngx-datatable-column name="someString"></ngx-datatable-column>
+      
+      <!--someStringDateTime-->
+      
+      <ngx-datatable-column name="someStringDateTime">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{ value | date:"MM/dd/yyyy" }}      
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--someStringUid-->
+      
+      <ngx-datatable-column name="someStringUid"></ngx-datatable-column>
+       
+    </ngx-datatable>
+  </md-card-content>
+</md-card>

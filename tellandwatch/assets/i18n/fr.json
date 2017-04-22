@@ -1,0 +1,73 @@
+{
+  "HOME": "Tableau de bord",
+
+  "APPS": "Apps",
+  "CALENDAR": "Calendrier",
+  "MEDIA": "Médias",
+  "MESSAGES": "Messages",
+  "SOCIAL": "Social",
+  "CHAT": "Bavarder",
+
+  "WIDGETS": "Widgets",
+
+  "MATERIAL": "Matériel",
+  "BUTTON": "Bouton",
+  "CARDS": "Cartes",
+  "SELECT": "Sélectionner",
+  "AUTOCOMPLETE": "Autocomplete",
+  "CHIPS": "Chips",
+  "INPUT": "Données",
+  "CHECKBOX": "Case à cocher",
+  "RADIO": "Radio",
+  "TOOLBAR": "Barre d'outils",    
+  "LISTS": "Listes",
+  "GRID": "La grille",
+  "PROGRESS": "La progression",
+  "TABS": "Onglets",
+  "SWITCH": "Le changement",
+  "TOOLTIP": "Info-bulle",
+  "MENU": "Le menu",
+  "SLIDER": "Curseur",
+  "SNACKBAR": "Snackbar",
+  "DIALOG": "Dialog",
+  
+  "FORMS": "Formes",
+  "EDITOR": "Editeur",
+  "VALIDATION": "Validation",
+  "UPLOAD": "Télécharger",
+  "TREE": "Arbre",
+
+  "TABLES": "Les tables",
+  "FULLSCREEN": "Plein écran",
+  "EDITING": "Édition",
+  "FILTER": "Filtre",
+  "SELECTION": "Sélection",
+  "PAGING": "Pagination",
+  "SORTING": "Tri",
+  "PINNING": "Épingler",
+
+  "CHARTS": "Graphiques",
+
+  "MAPS": "Cartes",
+  "GOOGLE": "Google",
+  "LEAFLET": "Leaflet",
+
+  "DND": "Glisser déposer",
+
+  "PAGES": "Pages",
+  "INVOICE": "Facture d'achat",
+  "TIMELINE": "Chronologie",
+  "USER": "Utilisateur",
+  "BLANK": "Blanc",
+  "PRICING": "Pricing",
+
+  "SESSION": "Session",
+  "404": "404",
+  "SIGNIN": "Signin",
+  "SIGNUP": "Signup",
+  "FORGOT": "Forgot",
+  "LOCKSCREEN": "Lockscreen",
+  "ERROR": "Error",
+  
+  "DOCS": "Docs"
+}

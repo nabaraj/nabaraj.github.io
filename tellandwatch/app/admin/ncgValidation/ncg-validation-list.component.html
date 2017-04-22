@@ -1,0 +1,47 @@
+<!--NcgValidation-->
+    <md-card fxFlex="100">
+  <md-card-title>List</md-card-title>
+  <md-card-subtitle></md-card-subtitle>
+  <md-card-content>
+    <ngx-datatable 
+      *ngIf="listWithCount" class="material" 
+      [rows]="rows" 
+      [columnMode]="'force'" 
+      [headerHeight]="50" 
+      [footerHeight]="50" 
+      [rowHeight]="'auto'" 
+      [externalPaging]="true" 
+      [count]="listWithCount.count" 
+      [offset]="paginationData.currentPage - 1"
+      [limit]="paginationData.maxSize" 
+      (page)='onPageChanged($event)'>
+      <ngx-datatable-column name="Actions">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button md-icon-button md-button-sm (click)="edit(row)" [attr.aria-label]="edit"><md-icon>edit</md-icon></button>
+          <button md-icon-button md-button-sm (click)="delete(row.id)" [attr.aria-label]="delete"><md-icon>delete</md-icon></button>
+        </ng-template>
+      </ngx-datatable-column>
+      
+      <!--id-->
+      
+      <ngx-datatable-column name="id"></ngx-datatable-column>
+      
+      <!--valEmailAddressPattern-->
+      
+      <ngx-datatable-column name="valEmailAddressPattern"></ngx-datatable-column>
+      
+      <!--valMin0Max100Value-->
+      
+      <ngx-datatable-column name="valMin0Max100Value"></ngx-datatable-column>
+      
+      <!--valMin2Max8Length-->
+      
+      <ngx-datatable-column name="valMin2Max8Length"></ngx-datatable-column>
+      
+      <!--valRequiredField-->
+      
+      <ngx-datatable-column name="valRequiredField"></ngx-datatable-column>
+       
+    </ngx-datatable>
+  </md-card-content>
+</md-card>
