@@ -1,0 +1,38 @@
+<div class="container">
+
+<!--<queryBuilder [query]="_query" />-->
+
+  <div>
+    <input id="searchInput" [(ngModel)]="_query.keywords" placeholder="search" />
+    <input [(ngModel)]="_query.expand" placeholder="expand" />
+    <input [(ngModel)]="_query.filter" placeholder="filter" />
+    <input [(ngModel)]="_query.select" placeholder="select" />
+    <input [(ngModel)]="_query.orderBy" placeholder="orderBy" />
+    <input id="recordsPerPageInput" [(ngModel)]="_query.top" placeholder="top" type="number" />
+    <input [(ngModel)]="_query.skip" placeholder="skip" type="number" />
+    <input [(ngModel)]="_query.count" placeholder="count" type="checkbox" />
+    <button id="getButton" (click)="getList()">Get</button>
+  </div>
+
+  <!--<pagination [totalItems]="_paginationData.itemCount" [(ngModel)]="_paginationData.currentPage" [maxSize]="_paginationData.maxSize"
+  class="pagination-sm" [boundaryLinks]="_paginationData.isBoundaryLinks" [rotate]="_paginationData.isRotate" (numPages)="numPages = $event"
+  [itemsPerPage]="_query.top">
+  </pagination>-->
+    <!--(pageChanged)="pageChanged($event)" only set on 1 pagination control or event will fire again-->
+
+  <progress [style.visibility]="isLoading ? 'visible' : 'hidden'" class="progress progress-striped progress-animated" [max]="100"
+  [value]="100">loading...
+    <!--<span style="color:white; white-space:nowrap;">{{dynamic}} / {{max}}</span>-->
+  </progress>
+
+  <!--custom entity here-->
+  <ng-content select="[tableToInject]"></ng-content>
+
+  <!--pager-->
+  <pagination [totalItems]="_paginationData.itemCount" [(ngModel)]="_paginationData.currentPage" [maxSize]="_paginationData.maxSize"
+  class="pagination-sm" [boundaryLinks]="_paginationData.isBoundaryLinks" [rotate]="_paginationData.isRotate"
+  (pageChanged)="pageChanged($event)" [itemsPerPage]="_query.top"
+  (numPages)="numPagesUpdated($event)"></pagination>
+
+<!--numPages = $event-->
+</div>

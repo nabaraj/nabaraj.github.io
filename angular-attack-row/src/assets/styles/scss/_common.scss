@@ -1,0 +1,62 @@
+body {
+    background-color: #f1f1f1;
+}
+#taw-content{
+
+  padding-bottom:100px;
+
+}
+#toast-container {
+    &.toast-top-right {
+        top: 81px
+    }
+    .toast-success {
+        background-image: none !important;
+        padding-left: 16px;
+        @media screen and (max-width: 767px) {
+            position: absolute;
+            right: 0;
+        }
+        h5 {
+            font-size: 17px;
+        }
+        p {
+            font-size: 13px;
+            margin: 12px 0;
+            line-height: 17px;
+        }
+        .toast-close-button {
+            position: absolute;
+            right: 8px;
+            top: 2px;
+        }
+    }
+}
+.dev-team-item{
+  .card-title{
+    display: block;
+  }
+}
+@media screen and (max-width: 767px) {
+    .container {
+        width: 100%;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .container {
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .container {
+        width: 1200px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}

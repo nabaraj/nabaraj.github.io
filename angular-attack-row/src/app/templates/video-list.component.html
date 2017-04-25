@@ -1,0 +1,12 @@
+<div *ngFor="let item of list; let even = even; let odd = odd; let index = index" class="col s6 video-list-item"
+     [ngClass]="{ odd: odd, even: even, activeClass:item.className }" (click)="playThisVideo(index)">
+  <div class="card hoverable">
+    <div class="card-image">
+      <img [src]="item.snippet.thumbnails.high.url"/>
+    </div>
+    <div class="card-content">
+      <span class="card-title"></span>
+      <p>{{item.snippet.title}}</p>
+    </div>
+  </div>
+</div>

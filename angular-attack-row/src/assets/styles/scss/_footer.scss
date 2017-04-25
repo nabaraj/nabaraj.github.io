@@ -1,0 +1,24 @@
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    .footerTop {
+        background-color: #333333;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        img {
+            width: 70px;
+            height: auto;
+        }
+    }
+    .footerBottom {
+        background-color: #282727;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        span {
+            color: #b4b4b4;
+            font-size: 15px;
+            text-shadow: 2px 2px 0 #000000;
+        }
+    }
+}

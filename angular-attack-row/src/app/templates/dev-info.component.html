@@ -1,0 +1,16 @@
+<div *ngFor="let item of devInfos" class="col s12 m6 dev-team-item">
+  <div class="card card-panel grey lighten-5 z-depth-2 hoverable">
+    <div class="row valign-wrapper">
+      <div class="col s12 m4">
+        <img [src]="item.imgUrl" alt="" class="circle responsive-img valign z-depth-12 hoverable">
+      </div>
+      <div class="col s12 m8">
+        <span class="card-title black-text">{{item.name}}</span>
+        <span class="black-text">{{item.mailID}}</span>
+      </div>
+    </div>
+    <div class="">
+      <p>{{item.description}}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+.row{
+    .list-view {
+      .video-list-item {
+        //@media screen and (min-width:768px){
+          width: 100%;
+        //}
+
+        .card {
+          @media screen and (min-width: 768px) {
+            min-height: 300px;
+          }
+          .card-content{
+            word-wrap: break-word;
+          }
+        }
+      }
+    }
+  .video-list-item{
+    &.even{
+      clear:both;
+    }
+    .btn-floating.halfway-fab {
+      position: absolute;
+      right: 24px;
+      bottom: -20px;
+    }
+    &.activeClass{
+      .card{
+        transition: box-shadow .25s;
+        box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+      }
+
+    }
+  }
+}
+.video-container {
+  margin-top: 10px;
+}

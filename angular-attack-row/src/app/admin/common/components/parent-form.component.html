@@ -1,0 +1,8 @@
+<div class="container">
+  <ng-content select="[formToInject]"></ng-content>
+
+  <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+  <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  <button type="button" [disabled]="myForm.pristine" class="btn btn-secondary" (click)="onReset()">Reset</button>
+  <button type="submit" [disabled]="!myForm.valid" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+</div>
