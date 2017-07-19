@@ -1,0 +1,271 @@
+.welcome-title{
+    font-size: 48px;
+    line-height: 52px;
+    font-weight: 500;
+    color: white;
+    display:none;
+}
+.welcome-desc{
+    color: white;
+    font-weight: 100;
+    display: none;
+    font-size:30px;
+}
+/*
+.overlay{
+    background-color: rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}*/
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    /*overflow:hidden;*/
+    background-color:#000000;
+}
+.cloudImage{
+    /*position: relative;
+    z-index: 10;*/
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    top:0;
+}
+.cloudImage img{
+    position: absolute;
+    z-index: 11;
+    width: 100%;
+    height: auto;
+    left: 0;
+    transition:all 3s linear;
+    top:50%;
+    transform: translateY(-50%);
+}
+.floatCloud .cloud1{
+    left:100%;
+}
+.floatCloud .cloud2{
+    left:-100%;
+}
+.mainBg{
+    background: url("../images/firm.jpg") 0 0 no-repeat;
+    background-size: cover;
+    position: fixed;
+    width:100%;
+    height: 100%;
+    top: 0;
+    left:0;
+    z-index: 5;
+    display: none;
+    visibility: hidden;
+}
+.overlay{
+    background-color: rgba(00,00,00,.5);
+    position: fixed;
+    z-index: 6;
+    width:100%;
+    height: 100%;
+    top: 0;
+    left:0;
+    text-align: center;
+    display: none;
+    pointer-events: none;
+}
+
+.desc-container{
+    margin-top: 15px;
+    position: absolute;
+    width:100%;
+    z-index: 8;
+    text-align: center;
+    top: 0;
+    pointer-events: none;
+}
+.welcome-desc{
+    font-family: 'Cormorant Upright';
+}
+.buttonBg{
+    background: url("../images/firm.jpg") 0 0 no-repeat;
+    position: absolute;
+    background-size: cover;
+    top: 0;
+    left:0;
+    z-index: 7;
+}
+.mainBtn{
+    width:150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow:hidden;
+    position: absolute;
+    z-index: 10;
+    /*background-color:rgba(255, 255, 255, 0.5);*/
+    text-align: center;
+    line-height: 150px;
+    margin:0;
+    opacity: 0;
+    bottom: 100px;
+    transition:opacity 0.3s linear;
+    cursor:default;
+    /*left: 50%;*/
+    /*transform: translateX(-50%);*/
+    /*top:80%;*/
+
+}
+.mainBtn.inview{
+    opacity: 1;
+}
+.mainBtn h3{
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    margin: 0;
+    width:100%;
+    text-align: center;
+    z-index: 11;
+    font-weight: bold;
+    color: #ffffff;
+}
+.showVrBtn{
+    margin-right: 20px;
+    position: absolute;
+    right: 0;
+    z-index: 20;
+    top: 20px;
+    background-color: rgba(00,00,00,.5);
+    color:#ffffff;
+}
+.showVrBtn:hover{
+    background-color: rgba(00,00,00,1);
+    color:#ffffff;
+}
+.vrImage{
+    opacity: 1;
+}
+.vrImage.vrVisible{
+    z-index: 15;
+    opacity: 1;
+    /*opacity: 0;*/
+}
+.mainBtn.ui-draggable.ui-draggable-handle.inview:before {
+    display: block;
+    content: "";
+    position: absolute;
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.vrImage{
+    opacity: 0;
+}
+.a-canvas,
+a-scene,
+a-sky,
+.vrImage,
+.a-orientation-modal,
+a-entity,
+html,body{
+    background-color: #000000 !important;
+}
+html{
+    background-color: #000000;
+}
+/*typed style*/
+/* code for animated blinking cursor */
+
+.type-source{
+    opacity: 0;
+}
+.typed-cursor {
+  opacity: 1;
+  font-weight: 100;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  -ms-animation: blink 0.7s infinite;
+  -o-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+ @-keyframes 
+blink {  0% {
+opacity:1;
+}
+ 50% {
+opacity:0;
+}
+ 100% {
+opacity:1;
+}
+}
+ @-webkit-keyframes 
+blink {  0% {
+opacity:1;
+}
+ 50% {
+opacity:0;
+}
+ 100% {
+opacity:1;
+}
+}
+ @-moz-keyframes 
+blink {  0% {
+opacity:1;
+}
+ 50% {
+opacity:0;
+}
+ 100% {
+opacity:1;
+}
+}
+ @-ms-keyframes 
+blink {  0% {
+opacity:1;
+}
+ 50% {
+opacity:0;
+}
+ 100% {
+opacity:1;
+}
+}
+ @-o-keyframes 
+blink {  0% {
+opacity:1;
+}
+ 50% {
+opacity:0;
+}
+ 100% {
+opacity:1;
+}
+}
+.hide-cursore .typed-cursor{
+    display: none;
+}
+.typed-fade-out {
+  opacity: 0;
+  animation: 0;
+  transition: opacity .25s;
+}
+/*typed style*/
+/*.vrImage{*/
+    /*!*Chrome,Safari*!*/
+    /*-webkit-clip-path: polygon(292px 327px,630px 325px,623px 96px,291px 97px);*/
+
+    /*!*Firefox*!*/
+    /*clip-path: url("#clipPolygon");*/
+/*}*/
+@media screen (max-width:767px){
+    bottom:0;
+}

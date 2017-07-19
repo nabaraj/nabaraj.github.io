@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome Landing Page</title>
+    <link href='https://fonts.googleapis.com/css?family=Cormorant Upright' rel='stylesheet'>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/welcome.css">
+    <script src="../scripts/vendor/vr-frame.min.js"></script>
+</head>
+<body>
+    <!--<svg width="0" height="0">-->
+        <!--<clipPath id="clipPolygon">-->
+            <!--<polygon points="292 327,630 325,623 96,291 97">-->
+            <!--</polygon>-->
+        <!--</clipPath>-->
+    <!--</svg>-->
+    <button class="btn showVrBtn showVr hidden">Show VR</button>
+    <a-scene class="vrImage">
+        <a-sky src="../images/firm.jpg" rotation="0 -130 0"></a-sky>
+    </a-scene>
+    <div class="cloudImage floatCloud">
+        <img src="../images/cloud1.png" alt="" class="cloud1">
+        <img src="../images/cloud2.png" alt="" class="cloud2">
+    </div>
+    <div class="desc-container">        
+        <div class="clearfix"></div>
+        <!--<div id="typed-strings" class="type-source"><span>Welcome<br>To<br>Foodspa</span></div>-->
+        <h1 class="welcome-title"><span id="typed"><span>Welcome</span></span></h1>
+        <!--<div id="typed-strings-desc" class="type-source"><span>embrace yorself for an unparallel journey from<br>Our Farm<br>To<br>Your-->
+            <!--Table</span></div>-->
+        <h3 class="welcome-desc hidden"><span id="typed-desc"><span>embrace yorself for an unparallel journey from<br>Our Farm<br>To<br>Your
+            Table</span></span></h3>
+    </div>
+    <div class="mainBtn hidden">
+        <h3>Drag me</h3>
+        <div class="buttonBg"></div>
+    </div>
+    <div class="overlay"></div>
+    <div class="mainBg"></div>
+    <script src="../scripts/jquery.min.js"></script>
+    <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script src="../scripts/vendor/jquery.ui.touch-punch.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../scripts/vendor/jquery.ui.touch-punch.min.js"></script>
+    <script src="../scripts/vendor/typed.js"></script>
+    <script src="../scripts/components/welcome.js"></script>
+</body>
+</html>

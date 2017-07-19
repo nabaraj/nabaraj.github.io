@@ -1,0 +1,11 @@
+{
+  "name": "Farming",
+  "dependencies": {
+    "modernizr": "~2.6.2",
+    "jquery": "2.0.3",
+    "jquery-ui": "latest",
+    "BigVideo.js": "latest",
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {}
+}
