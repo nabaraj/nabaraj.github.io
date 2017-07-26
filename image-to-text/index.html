@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <script src="script/ocrad.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"> -->
+
+    <script>
+
+    function readText(image)
+    {
+        var canvas = document.getElementById("canvas");
+        canvas.width = image.naturalWidth;
+        canvas.height = image.naturalHeight;
+
+        var context = canvas.getContext("2d");
+        context.drawImage(image, 0, 0);
+
+        var parsedText = OCRAD(canvas);
+        // Or:
+        // var parsedText = OCRAD(context);
+
+        var output = document.getElementById("output");
+        console.log(parsedText);
+        output.innerHTML = parsedText.replace(/\s/g, '');
+    };
+
+    </script>
+    <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+    <div class="entranceFade first">
+        <div class="header">Image to use:</div>
+        <img onload="readText(this)" id="image" src="images/scan-image.jpg"/>
+    </div>
+    <div class="entranceFade second">
+        <div class="header">Canvas:</div>
+        <canvas id="canvas" class="border">
+        This browser does not support the HTML5 canvas tag</canvas>
+    </div>
+    <div class="entranceFade third">
+        <div class="header">Text from image:</div>
+        <div class="header highlight" id="output">Fecthing text…</div>
+    </div>
+</body>
+</html>
