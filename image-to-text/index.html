@@ -9,6 +9,11 @@
         #canvas{
             display: none;
         }
+        #output{
+            font-weight: bold;
+            font-size: 20px;
+            color: rebeccapurple;
+        }
     </style>
 </head>
 <body>
@@ -34,9 +39,23 @@
         console.log(parsedText);
         output.innerHTML = parsedText.replace(/\s/g, '');
     };
+    function previewFile() {
+        var preview = document.querySelector('img');
+        var file    = document.querySelector('input[type=file]').files[0];
+        var reader  = new FileReader();
 
+        reader.onloadend = function () {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = "";
+        }
+    }
     </script>
-    <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+    <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" onchange="previewFile()">
     <div class="entranceFade first">
         <div class="header">Image to use:</div>
         <img onload="readText(this)" id="image" src="images/scan-image.jpg"/>
