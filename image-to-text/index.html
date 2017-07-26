@@ -56,14 +56,14 @@
         if (file) {
             reader.readAsDataURL(file);
         } else {
-            preview.src = "";
+            //preview.src = "";
         }
     }
     </script>
     <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" onchange="previewFile()">
     <div class="entranceFade first">
         <div class="header">Image to use:</div>
-        <img onload="readText(this)" id="image" src="images/scan-image.jpg"/>
+        <img onload="readText(this)" id="image" src="images/download.jpg"/>
     </div>
     <div class="entranceFade second">
         <div class="header">Canvas:</div>
