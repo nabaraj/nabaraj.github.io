@@ -22,7 +22,7 @@
             position: fixed;
             top: -999999px;
         }
-        .uploadImage{
+        .btn{
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             background-color: #A9181D;
             color: #ffffff;
@@ -31,6 +31,9 @@
             display: inline-block;
             margin-bottom: 20px;
             cursor: pointer;
+            text-decoration: none;
+            border: 0;
+            outline: none;
         }
         .container{
             max-width: 1024px;
@@ -38,7 +41,40 @@
             padding:0 15px;
             text-align: center;
         }
+        #canvas{
+            display: none;
+            max-width: 150px;
+        }
+        #output{
+            display: inline-block;
+            max-width: 100%;
+            width: 500px;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            display: none;
+        }
+        .btn.disabled{
+            background-color: #eee;
+            opacity: 1;
+            color: #333333;
+            pointer-events: none;
+        }
+        #getText{
+            display: none;
+        }
+        #output.disabled{
+            background-color: #eee;
+            pointer-events: none;
+        }
     </style>
+    <script src="scripts/ocrad.js"></script>
     <script>
         function previewFile() {
             //console.log("preview file");
@@ -46,10 +82,16 @@
             var preview = document.querySelector('img');
             var file    = document.querySelector('input[type=file]').files[0];
             var reader  = new FileReader();
+            var output = document.getElementById("output");
+            var takePhotoLabel = document.getElementById("takePhotoLabel");
+            var getText = document.getElementById("getText");
 
             reader.onloadend = function () {
                 preview.src = reader.result;
                 preview.style.opacity = 1;
+                output.style.display="inline-block";
+                takePhotoLabel.style.display="none";
+                getText.style.display="inline-block";
             }
 
             if (file) {
@@ -59,15 +101,36 @@
                 preview.src = "";
             }
         }
+        function readText(){
+            var canvas = document.getElementById("canvas");
+            var image = document.querySelector('img');
+            canvas.width = image.naturalWidth;
+            canvas.height = image.naturalHeight;
+
+            var context = canvas.getContext("2d");
+            context.drawImage(image, 0, 0);
+
+            var parsedText = OCRAD(canvas);
+            // Or:
+            // var parsedText = OCRAD(context);
+
+            var output = document.getElementById("output");
+            //console.log(parsedText);
+            //output.innerHTML = parsedText.replace(/\s/g, '');
+            output.value = parsedText;
+        };
     </script>
 </head>
 <body>
     <div class="container">
         <h1>Add your code</h1>
-        <label for="cameraInput" class="uploadImage">Take A Photo</label>
+        <label for="cameraInput" class="uploadImage btn" id="takePhotoLabel">Take A Photo</label>
+        <button id="getText" class="btn" onclick="readText()">Get Code</button>
         <input type="file" accept="image/*" id="cameraInput" name="cameraInput" onchange="previewFile()">    
         <br/> 
         <img src="" id="showImage" alt="">   
+        <canvas id="canvas" class="border"></canvas><br/> 
+        <input type="text" id="output">
     </div>
 </body>
 </html>
