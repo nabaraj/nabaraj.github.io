@@ -116,9 +116,10 @@
         }
         function readText(){
             var loader = document.getElementById("loader");
+            loader.style.display="block";
             var canvas = document.getElementById("canvas");
             var image = document.getElementById('showImage');
-            loader.style.display="block";
+            
             canvas.width = image.naturalWidth;
             canvas.height = image.naturalHeight;
 
@@ -145,7 +146,7 @@
     <div id="loader">
     </div>
     <div class="container">
-        <h1>Add your code</h1>
+        <h1>Add Your Code</h1>
         <label for="cameraInput" class="uploadImage btn" id="takePhotoLabel">Take A Photo</label>
         <button id="getText" class="btn" onclick="readText()">Get Code</button>
         <input type="file" accept="image/*" id="cameraInput" name="cameraInput" onchange="previewFile()">    
