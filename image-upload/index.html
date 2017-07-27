@@ -7,7 +7,9 @@
     <title>Image upload</title>
     <style>
         #showImage{
-            max-width: 200px;
+            max-width: 100%;
+            width: 500px;
+            
             height: auto;
             display: inline-block;
             vertical-align: top;
@@ -15,8 +17,25 @@
         #cameraInput{
             display: inline-block;
             vertical-align: top;
+            opacity: 0;
+            position: fixed;
+            top: -999999px;
         }
-
+        .uploadImage{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: #A9181D;
+            color: #ffffff;
+            font-size: 14px;
+            padding: 10px 32px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .container{
+            max-width: 1024px;
+            margin:0 auto;
+            padding:0 15px;
+            text-align: center;
+        }
     </style>
     <script>
         function previewFile() {
@@ -33,13 +52,18 @@
             if (file) {
                 reader.readAsDataURL(file);
             } else {
-                //preview.src = "";
+                preview.src = "";
             }
         }
     </script>
 </head>
 <body>
-    <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" onchange="previewFile()">
-    <img src="" id="showImage" alt="">
+    <div class="container">
+        <h1>Add your code</h1>
+        <label for="cameraInput" class="uploadImage">Upload Image</label>
+        <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" onchange="previewFile()">    
+        <br/> 
+        <img src="" id="showImage" alt="">   
+    </div>
 </body>
 </html>
