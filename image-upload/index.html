@@ -76,13 +76,23 @@
             background-color: #eee;
             pointer-events: none;
         }
+        #loader{
+            position: absolute;
+            z-index: 1000;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: url("images/loader1.gif") 50% 50% no-repeat;
+            display: none;
+        }
     </style>
     <script src="scripts/ocrad.js"></script>
     <script>
         function previewFile() {
             //console.log("preview file");
             
-            var preview = document.querySelector('img');
+            var preview = document.getElementById('showImage');
             var file    = document.querySelector('input[type=file]').files[0];
             var reader  = new FileReader();
             var output = document.getElementById("output");
@@ -105,8 +115,10 @@
             }
         }
         function readText(){
+            var loader = document.getElementById("loader");
             var canvas = document.getElementById("canvas");
-            var image = document.querySelector('img');
+            var image = document.getElementById('showImage');
+            loader.style.display="block";
             canvas.width = image.naturalWidth;
             canvas.height = image.naturalHeight;
 
@@ -123,10 +135,15 @@
             output.value = parsedText;
             takePhotoLabel.style.display="inline-block";
             getText.style.display="none";
+            image.style.opacity=0;
+            image.src="";
+            loader.style.display="none";
         };
     </script>
 </head>
 <body>
+    <div id="loader">
+    </div>
     <div class="container">
         <h1>Add your code</h1>
         <label for="cameraInput" class="uploadImage btn" id="takePhotoLabel">Take A Photo</label>
