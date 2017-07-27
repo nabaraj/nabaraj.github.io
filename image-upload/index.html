@@ -47,10 +47,12 @@
 
             reader.onloadend = function () {
                 preview.src = reader.result;
+                //preview.css.opacity = "inlineBlock";
             }
 
             if (file) {
                 reader.readAsDataURL(file);
+                
             } else {
                 preview.src = "";
             }
@@ -60,7 +62,7 @@
 <body>
     <div class="container">
         <h1>Add your code</h1>
-        <label for="cameraInput" class="uploadImage">Upload Image</label>
+        <label for="cameraInput" class="uploadImage">Take A Photo</label>
         <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput" onchange="previewFile()">    
         <br/> 
         <img src="" id="showImage" alt="">   
