@@ -13,6 +13,7 @@
             height: auto;
             display: inline-block;
             vertical-align: top;
+            opacity: 0;
         }
         #cameraInput{
             display: inline-block;
@@ -47,7 +48,7 @@
 
             reader.onloadend = function () {
                 preview.src = reader.result;
-                //preview.css.opacity = "inlineBlock";
+                preview.style.opacity = 1;
             }
 
             if (file) {
