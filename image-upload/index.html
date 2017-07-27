@@ -86,7 +86,8 @@
             background:rgba(255,255,255,0.5) url("images/loader1.gif") 50% 50% no-repeat;
             display: none;
         }
-    </style>
+</style>
+    <script src="jquery.min.js"></script>
     <script src="scripts/ocrad.js"></script>
     <script>
         function previewFile() {
@@ -117,28 +118,33 @@
         function readText(){
             var loader = document.getElementById("loader");
             loader.style.display="block";
-            var canvas = document.getElementById("canvas");
-            var image = document.getElementById('showImage');
+
+            $("#loader").show(function(){
+                var canvas = document.getElementById("canvas");
+                var image = document.getElementById('showImage');
+                
+                canvas.width = image.naturalWidth;
+                canvas.height = image.naturalHeight;
+
+                var context = canvas.getContext("2d");
+                context.drawImage(image, 0, 0);
+
+                var parsedText = OCRAD(canvas);
+                // Or:
+                // var parsedText = OCRAD(context);
+
+                var output = document.getElementById("output");
+                //console.log(parsedText);
+                //output.innerHTML = parsedText.replace(/\s/g, '');
+                output.value = parsedText;
+                takePhotoLabel.style.display="inline-block";
+                getText.style.display="none";
+                image.style.opacity=0;
+                image.src="";
+                loader.style.display="none";
+            })
+
             
-            canvas.width = image.naturalWidth;
-            canvas.height = image.naturalHeight;
-
-            var context = canvas.getContext("2d");
-            context.drawImage(image, 0, 0);
-
-            var parsedText = OCRAD(canvas);
-            // Or:
-            // var parsedText = OCRAD(context);
-
-            var output = document.getElementById("output");
-            //console.log(parsedText);
-            //output.innerHTML = parsedText.replace(/\s/g, '');
-            output.value = parsedText;
-            takePhotoLabel.style.display="inline-block";
-            getText.style.display="none";
-            image.style.opacity=0;
-            image.src="";
-            loader.style.display="none";
         };
     </script>
 </head>
