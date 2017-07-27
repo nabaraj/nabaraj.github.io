@@ -41,11 +41,13 @@
         // var parsedText = OCRAD(context);
 
         var output = document.getElementById("output");
-        console.log(parsedText);
-        output.innerHTML = parsedText.replace(/\s/g, '');
+        //console.log(parsedText);
+        //output.innerHTML = parsedText.replace(/\s/g, '');
+        output.innerHTML = parsedText
     };
     function previewFile() {
-        console.log("preview file");
+        //console.log("preview file");
+        
         var preview = document.querySelector('img');
         var file    = document.querySelector('input[type=file]').files[0];
         var reader  = new FileReader();
