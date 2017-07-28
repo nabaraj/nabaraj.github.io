@@ -1,0 +1,40 @@
+html {
+  font-family:sans-serif;
+  -webkit-text-size-adjust:100%;
+  -ms-text-size-adjust:100%
+}
+
+body {
+  margin: 30px;
+}
+
+#fileUpload {
+	width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.loading,
+.review,
+.results {
+  display: none;
+}
+
+button {
+  display: block;
+  margin: 10px auto;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
