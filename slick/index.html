@@ -64,6 +64,9 @@
         </div>
     </section>
 
+    <div class="zoom-label">
+
+    </div>
 
     <div class="carousel-container">
         <div class="rewards-carousel" role="toolbar"><button class="slick-prev icon icon-previous-carousel-arrow slick-arrow slick-disabled" aria-disabled="true" style=""></button>
@@ -267,7 +270,12 @@
                         }
                     }]
                 });
+                $(document).bind("gesturechange", function(event) {
 
+                    var scale = event.originalEvent.scale;
+
+                    $(".zoom-label").text(scale);
+                });
             });
         </script>
 </body>
