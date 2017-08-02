@@ -289,6 +289,7 @@
                 $(window).on('orientationchange', function() {
                     $('.rewards-carousel').unslick();
                     $(".rewards-carousel").slick(slideOption);
+                    $(".zoom-label").text("orientation change");
                 });
                 // $(window).on("orientationchange",function(){
                 //     alert("The orientation has changed!");
