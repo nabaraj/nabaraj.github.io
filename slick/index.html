@@ -226,6 +226,7 @@
                     infinite: false,
                     speed: 300,
                     slidesToShow: 4,
+                    mobileFirst: true,
                     slidesToScroll: 4,
                    
                     responsive: [{
@@ -270,11 +271,14 @@
                         }
                     }]
                 });
-                var scale = document.documentElement.clientWidth / window.innerWidth;
-                $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
-                $(window).resize(function(event) {
-                    var scale = document.documentElement.clientWidth / window.innerWidth;
-                    $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
+                // var scale = document.documentElement.clientWidth / window.innerWidth;
+                // $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
+                // $(window).resize(function(event) {
+                //     var scale = document.documentElement.clientWidth / window.innerWidth;
+                //     $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
+                // });
+                $(window).on('orientationchange', function() {
+                    $('.rewards-carousel').slick('resize');
                 });
             });
         </script>
