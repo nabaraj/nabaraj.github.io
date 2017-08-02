@@ -65,7 +65,7 @@
     </section>
 
     <div class="zoom-label">
-        zoom-label
+        window.resize
     </div>
 
     <div class="carousel-container">
@@ -270,9 +270,9 @@
                         }
                     }]
                 });
-                $(document).bind("gesturechange", function(event) {
+                $(window).bind("resize", function(event) {
                     var scale = document.documentElement.clientWidth / window.innerWidth;
-                    $(".zoom-label").text(scale);
+                    $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
                 });
             });
         </script>
