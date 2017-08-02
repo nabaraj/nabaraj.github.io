@@ -217,14 +217,14 @@
         <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
         <script src="scripts/slick.min.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript">
-            window.addEventListener('gesturestart', function (event) {
-                event.preventDefault();      
-            }, false)
-            document.documentElement.addEventListener('gesturestart', function (event) {
-                event.preventDefault();      
-            }, false);
-            $(document).on('ready', function () {
-                $(".rewards-carousel").slick({
+            // window.addEventListener('gesturestart', function (event) {
+            //     event.preventDefault();      
+            // }, false)
+            // document.documentElement.addEventListener('gesturestart', function (event) {
+            //     event.preventDefault();      
+            // }, false);
+
+            var slideOption = {
                     dots: true,
                     arrows: true,
                     adaptiveHeight: true,
@@ -277,7 +277,9 @@
                             slidesToScroll: 1
                         }
                     }]
-                });
+                }
+            $(document).on('ready', function () {
+                $(".rewards-carousel").slick(slideOption);
                 // var scale = document.documentElement.clientWidth / window.innerWidth;
                 // $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
                 // $(window).resize(function(event) {
@@ -285,8 +287,12 @@
                 //     $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
                 // });
                 $(window).on('orientationchange', function() {
-                    $('.rewards-carousel').slick('resize');
+                    $('.rewards-carousel').unslick();
+                    $(".rewards-carousel").slick(slideOption);
                 });
+                // $(window).on("orientationchange",function(){
+                //     alert("The orientation has changed!");
+                // });
             });
         </script>
 </body>
