@@ -286,10 +286,19 @@
                 //     var scale = document.documentElement.clientWidth / window.innerWidth;
                 //     $(".zoom-label").text("client width "+document.documentElement.clientWidth+" window resize " +scale+" innerwidth "+window.innerWidth);
                 // });
-                $(window).on('orientationchange', function() {
-                    $('.rewards-carousel').unslick();
-                    $(".rewards-carousel").slick(slideOption);
-                    $(".zoom-label").text("orientation change");
+                window.addEventListener("orientationchange", function() {
+                    //clearTimeout(resizeslicktimer);
+                    var resizeslicktimer;
+                    
+                    setTimeout(function(){
+                        
+                        $('.rewards-carousel').unslick();
+                        $(".rewards-carousel").slick(slideOption);
+                        $(".zoom-label").text("orientation change");
+
+                    },1000);
+
+                   
                 });
                 // $(window).on("orientationchange",function(){
                 //     alert("The orientation has changed!");
