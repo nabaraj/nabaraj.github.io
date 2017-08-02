@@ -271,9 +271,7 @@
                     }]
                 });
                 $(document).bind("gesturechange", function(event) {
-
-                    var scale = event.originalEvent.scale;
-
+                    var scale = document.documentElement.clientWidth / window.innerWidth;
                     $(".zoom-label").text(scale);
                 });
             });
