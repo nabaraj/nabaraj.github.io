@@ -1,3 +1,6 @@
+body{
+  background-color:#000000;
+}
 @-webkit-keyframes snowflakes-fall {
   0% {
     top: -10%;
