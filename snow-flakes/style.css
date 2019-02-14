@@ -41,6 +41,7 @@ body{
   position: fixed;
   top: -10%;
   z-index: 9999;
+  color:#cccccc;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
