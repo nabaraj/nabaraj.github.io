@@ -27984,12 +27984,12 @@ document.addEventListener("click", function (e) {
   } else if (target.classList.contains("cartCount")) {}
 });
 var router = new _js_router__WEBPACK_IMPORTED_MODULE_3__["default"]();
-router.get(window.location.href, function (req) {
+router.get('/shopping-cart/', function (req) {
   console.log(req.path); // outputs /about-me to the console
 
   document.getElementById("app").innerHTML = Object(_js_shopping_list__WEBPACK_IMPORTED_MODULE_2__["renderProductPage"])(filterData, storeEvent, products);
 });
-router.get(window.location.href, function (req) {
+router.get('/shopping-cart/cart', function (req) {
   console.log(req.path, gD); // outputs /about-me to the console
 
   document.getElementById("app").innerHTML = Object(_js_cart_page__WEBPACK_IMPORTED_MODULE_4__["cartPage"])(gD, cartPrice, cartDiscount);
