@@ -9,6 +9,7 @@ let priceRange = { min: 0, max: Infinity };
 let searchQuery = "";
 let sortOption = "default";
 
+const productGrid = document.getElementById("product-grid");
 const loadMore = document.getElementById("load-more");
 const sort = document.getElementById("sort");
 const productCount = document.getElementById("productCount");
@@ -30,15 +31,23 @@ const fetchData = async (url) => {
 const updateProductCount = (length) => {
   productCount.innerText = `${length} Results`;
 };
-
+const showShimmerEffect = () => {
+  productGrid.innerHTML = "";
+  for (let i = 0; i < 6; i++) {
+    const shimmer = document.createElement("div");
+    shimmer.className = "product-card shimmer";
+    shimmer.innerHTML = `
+      <div class="shimmer-image"></div>
+      <div class="shimmer-title"></div>
+      <div class="shimmer-price"></div>
+    `;
+    productGrid.appendChild(shimmer);
+  }
+};
 // Render products dynamically
 const renderProducts = ({ products = [], error = null, isLoading = false }) => {
-  const productGrid = document.getElementById("product-grid");
-
   if (isLoading) {
-    productGrid.innerHTML = `<p class="error-message text-center w-full">Loading Products...</p>`;
-    loadMore.classList.add("hidden");
-    sort.classList.add("hidden");
+    showShimmerEffect();
     return;
   }
 
@@ -261,5 +270,4 @@ document.getElementById("search-bar").addEventListener("input", handleSearch);
 document.getElementById("sort").addEventListener("change", handleSortChange);
 loadMore.addEventListener("click", handleLoadMore);
 
-// Run the application
 init();
