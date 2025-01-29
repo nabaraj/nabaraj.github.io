@@ -247,7 +247,6 @@ body {
 header {
   background: #1363df; /* Primary background color */
   color: white;
-  padding: 1rem 0;
 }
 
 /* Navbar Flexbox Layout */
@@ -285,6 +284,30 @@ header {
   margin: 0;
   flex-wrap: wrap;
 }
+.nav-links li {
+  padding: 1rem 0;
+  position: relative;
+}
+.nav-links li:after {
+  transition: all 0.2s linear;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 1px;
+  width: 100%;
+  height: 3px;
+  background-color: #1363df;
+}
+.nav-links li.active:after, .nav-links li:hover:after {
+  transition: all 0.2s linear;
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 1px;
+  width: 100%;
+  height: 3px;
+  background-color: white;
+}
 
 .nav-links li a {
   text-decoration: none;
@@ -295,11 +318,6 @@ header {
   border-radius: 5px;
   font-weight: bold;
   transition: all 0.2s linear;
-}
-
-.nav-links li a:hover {
-  background-color: rgba(255, 255, 255, 0.704);
-  color: #0056b3;
 }
 
 .mobile-navigation .filters {
@@ -411,7 +429,6 @@ header {
   padding-bottom: 32px;
 }
 
-/* Search Container */
 .search-container {
   flex-grow: 1;
   display: flex;
@@ -420,7 +437,7 @@ header {
 
 .search-container input {
   width: 80%;
-  max-width: 300px; /* Cap the width */
+  max-width: 300px;
   padding: 0.5rem;
   border-radius: 5px;
   border: 1px solid #b5b7bc;
@@ -539,6 +556,55 @@ header {
     align-items: center;
   }
 }
+/* Shimmer effect animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: 200px 0;
+  }
+}
+/* Product card shimmer */
+.shimmer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  width: 200px;
+}
+
+/* Image placeholder */
+.shimmer-image {
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Title placeholder */
+.shimmer-title {
+  width: 80%;
+  height: 16px;
+  margin-top: 12px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Price placeholder */
+.shimmer-price {
+  width: 60%;
+  height: 14px;
+  margin-top: 8px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 400px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
 .sidebar {
   width: 25%;
   padding-right: 20px;
