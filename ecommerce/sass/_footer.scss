@@ -1,0 +1,68 @@
+@use "./variables" as *;
+.footer {
+  padding: 16px 0;
+  &-navigation {
+    flex-direction: column;
+    @include desktop {
+      flex-direction: row;
+    }
+    .navItem {
+      width: 100%;
+      flex-basis: 25%;
+      padding-bottom: 32px;
+      @include desktop {
+        width: 25%;
+      }
+      h3 {
+        font-weight: 600;
+        margin-bottom: 16px;
+      }
+      li {
+        padding: 3px 0;
+      }
+      p {
+        padding-bottom: 10px;
+      }
+    }
+  }
+  &-terms {
+    .container {
+      flex-direction: column;
+      flex-wrap: wrap;
+      @include desktop {
+        flex-direction: row;
+      }
+      > div {
+        min-width: 100%;
+        flex-basis: 100%;
+        text-align: left;
+        flex: 1;
+        padding-bottom: 16px;
+        text-align: center;
+        @include desktop {
+          min-width: 33.33%;
+          flex-basis: 33.33%;
+        }
+        &.footer-logo {
+          order: 10;
+          text-align: center;
+          @include desktop {
+            text-align: left;
+            order: 0;
+          }
+        }
+        &.footer-copyright {
+          text-align: center;
+          @include desktop {
+            text-align: right;
+          }
+        }
+      }
+    }
+  }
+  .social {
+    > a {
+      padding: 0 5px;
+    }
+  }
+}

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Listing Page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar container flex flex-wrap" aria-label="Main Navigation">
+        <!-- Hamburger Icon -->
+        <button
+          class="hamburger show-mobile"
+          id="hamburger"
+          aria-label="Open Menu"
+          aria-expanded="false"
+          aria-controls="responsive-navigation"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <a href="/" class="logo">ENIA</a>
+
+        <div
+          class="flex mobile-navigation space-between"
+          id="responsive-navigation"
+          role="menu"
+        >
+          <div class="mobile-navigation-head flex space-between">
+            <span class="show-mobile">Navigation</span>
+            <button
+              class="closeMobileNavigation show-mobile"
+              id="mobile-navigation-close"
+              aria-label="Close Menu"
+            >
+              ✕
+            </button>
+          </div>
+          <ul class="nav-links" role="menubar">
+            <li role="none"><a href="#" role="menuitem">Home</a></li>
+            <li role="none"><a href="#" role="menuitem">Women</a></li>
+            <li role="none"><a href="#" role="menuitem">Men</a></li>
+            <li role="none"><a href="#" role="menuitem">Smart Gear</a></li>
+            <li role="none"><a href="#" role="menuitem">Accessories</a></li>
+          </ul>
+        </div>
+
+        <div class="cart" aria-label="Shopping Cart">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="currentColor"
+            class="bi bi-bag"
+            viewBox="0 0 16 16"
+            aria-hidden="true"
+          >
+            <path
+              d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
+            />
+          </svg>
+          <span class="cart-badge" aria-live="polite">10</span>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="banner relative flex w-full pb-32">
+        <div
+          class="banner-content flex center-align justify-center text-center"
+        >
+          <h1>Men's Outerwear</h1>
+          <div class="underline"></div>
+        </div>
+        <div class="banner-wrapper">
+          <div class="banner-image relative">
+            <img
+              src="https://images.unsplash.com/photo-1560243563-062bfc001d68?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="Men's Outerwear Banner"
+              class=""
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="container flex flex-wrap pb-32">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#">Clothing</a> / <a href="#">Women’s</a> /
+          <span aria-current="page">Outerwear</span>
+        </nav>
+
+        <aside class="sidebar" id="mobileFilter">
+          <div class="mobile-filter-head flex space-between">
+            <h2 class="filter-title">Filters</h2>
+          </div>
+          <div class="filters" id="dynamic-filters">
+            <fieldset>
+              <legend>Categories</legend>
+              <div class="flex flex-wrap filters-lists border-b column">
+                <label for="jewelery">
+                  <input type="checkbox" id="jewelery" value="jewelery" />
+                  Jewellery
+                </label>
+                <label for="electronics">
+                  <input type="checkbox" id="electronics" value="electronics" />
+                  Electronics
+                </label>
+                <label for="mens-clothing">
+                  <input
+                    type="checkbox"
+                    id="mens-clothing"
+                    value="mens-clothing"
+                  />
+                  Men’s Clothing
+                </label>
+                <label for="womens-clothing">
+                  <input
+                    type="checkbox"
+                    id="womens-clothing"
+                    value="womens-clothing"
+                  />
+                  Women’s Clothing
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </aside>
+
+        <section class="main">
+          <!-- Search Bar -->
+          <div class="search-container w-full pb-32">
+            <label for="search-bar" class="sr-only hidden"
+              >Search Products</label
+            >
+            <input
+              type="search"
+              id="search-bar"
+              placeholder="Search for products..."
+              aria-label="Search for products"
+            />
+          </div>
+
+          <div class="flex space-between flex-wrap">
+            <div class="sorting text-right">
+              <label for="sort" class="sr-only hidden">Sort Products</label>
+              <select class="form-select" id="sort">
+                <option value="default">Sort by</option>
+                <option value="low-to-high">Price: Low to High</option>
+                <option value="high-to-low">Price: High to Low</option>
+              </select>
+            </div>
+
+            <div id="openFilter" class="hide-desktop-flex justify-center">
+              <img src="./assets/images/sliders.svg" alt="" />
+              <span class="pl-2">Filter Results</span>
+            </div>
+
+            <div
+              id="productCount"
+              class="md:w-auto full-width text-center pb-32 mx:pb-0"
+            ></div>
+          </div>
+
+          <div id="product-grid" class="flex flex-wrap"></div>
+
+          <div class="text-center pointer">
+            <button class="loadMore" id="load-more">Load More</button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer border-t">
+      <div class="flex space-between footer-navigation container">
+        <div class="navItem">
+          <h3>Account</h3>
+          <ul>
+            <li class="pointer">Sign In</li>
+            <li class="pointer">Register</li>
+            <li class="pointer">Order Status</li>
+            <li class="pointer">Returns</li>
+          </ul>
+        </div>
+        <div class="navItem">
+          <h3>About Us</h3>
+          <ul>
+            <li class="pointer">Our Story</li>
+            <li class="pointer">Email Sign Up</li>
+            <li class="pointer">Give Back</li>
+          </ul>
+        </div>
+        <div class="navItem">
+          <h3>Help</h3>
+          <ul>
+            <li class="pointer">Live Chat</li>
+            <li class="pointer">Contact us</li>
+            <li class="pointer">Order Status</li>
+            <li class="pointer">Returns</li>
+          </ul>
+        </div>
+        <div class="navItem">
+          <h3>Follow Us!</h3>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore.
+          </p>
+          <div class="flex social">
+            <a href="#" aria-label="Instagram">
+              <img src="./assets/images/instagram.svg" alt="Instagram" />
+            </a>
+            <a href="#" aria-label="Facebook">
+              <img src="./assets/images/facebook.svg" alt="Facebook" />
+            </a>
+            <a href="#" aria-label="Twitter">
+              <img src="./assets/images/twitter.svg" alt="Twitter" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-terms border-t pb-32">
+        <div class="container flex space-between pt-32">
+          <div class="footer-logo">VENIA</div>
+          <div class="text-center">
+            <span class="text-underline px-4">Terms of Use</span>
+            <span class="text-underline px-4">Privacy Policy</span>
+          </div>
+          <div class="footer-copyright">
+            © Company Name Address Ave, City Name, State ZIP
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./scripts/app.js" defer></script>
+    <script src="./scripts/utils.js" defer></script>
+  </body>
+</html>

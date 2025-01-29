@@ -1,0 +1,64 @@
+@use "./variables" as *;
+.banner {
+  height: 350px;
+  position: relative;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 127px;
+  @include desktop {
+    padding-right: 0;
+    padding-left: 0;
+    padding-top: 0;
+  }
+  &-wrapper {
+    padding-top: 0px;
+    padding-bottom: 10px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    height: 193px;
+    left: 0;
+    @include desktop {
+      width: 75%;
+      padding-top: 10px;
+      position: static;
+      height: auto;
+    }
+  }
+  &-image {
+    overflow: hidden;
+    max-height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-image: url("https://images.unsplash.com/photo-1560243563-062bfc001d68?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    img {
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+  }
+  &-content {
+    background-color: $banner_black;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    @include desktop {
+      width: 25%;
+    }
+    color: #ffffff;
+    padding-left: 60px;
+    padding-right: 60px;
+    h1 {
+      font-size: 36px;
+      @include desktop {
+        font-size: 46px;
+      }
+    }
+    .underline {
+      height: 8px;
+      width: 25%;
+      background-color: $brand;
+    }
+  }
+}

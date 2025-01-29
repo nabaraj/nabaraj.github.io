@@ -1,0 +1,67 @@
+@use "./variables" as *;
+
+.sidebar {
+  width: 25%;
+  padding-right: 20px;
+
+  h2 {
+    font-size: 20px;
+    padding-bottom: 16px;
+  }
+
+  .filters {
+    color: $text_black;
+
+    &-lebel {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    &-lists {
+      label {
+        padding-top: 8px;
+        padding-bottom: 8px;
+      }
+    }
+  }
+  .close-sidebar {
+    position: absolute;
+    top: 8px;
+    right: 15px;
+    font-size: 24px;
+    z-index: 2;
+    cursor: pointer;
+    @include desktop {
+      display: none;
+    }
+  }
+  // Mobile Sidebar Filter - Initially Hidden
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: -80%; // Sidebar is hidden initially
+    width: 75%;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding-top: 70px;
+    overflow-y: auto;
+    &.active {
+      left: -75%;
+      transform: translateX(100%); // Slide in effect
+    }
+
+    .mobile-filter-head {
+      background-color: #e5e5e7;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 1;
+      padding: 1rem;
+    }
+  }
+}

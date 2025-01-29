@@ -1,0 +1,153 @@
+@use "./variables" as *;
+body {
+  font-size: 16px;
+}
+.source-serif {
+  font-family: "Source Serif 4", serif;
+}
+.pointer {
+  cursor: pointer;
+}
+.w-full {
+  width: 100%;
+}
+.container {
+  max-width: 1536px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.flex {
+  display: flex;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.full-width {
+  width: 100%;
+}
+@media (min-width: 769px) {
+  .md\:w-auto {
+    width: auto;
+  }
+  .mx\:pb-0 {
+    padding-bottom: 0 !important;
+  }
+}
+
+.column {
+  flex-direction: column;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.space-between {
+  justify-content: space-between;
+}
+.center-align {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.text-underline {
+  text-decoration: underline;
+}
+.border-b {
+  border-bottom: 1px solid #d1d3d6;
+}
+.border-t {
+  border-top: 1px solid #d1d3d6;
+}
+.pl-2 {
+  padding-left: 2px;
+}
+.px-4 {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.pb-32 {
+  padding-bottom: 32px;
+}
+.pt-32 {
+  padding-top: 32px;
+}
+.py-8,
+.pt-8 {
+  padding-top: 8px;
+}
+.py-8,
+.pb-8 {
+  padding-bottom: 8px;
+}
+.form {
+  &-select {
+    border: 1px solid $form_border;
+    padding: 12px;
+    border-radius: 8px;
+    width: 254px;
+  }
+}
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+/* Utility classes for mobile and desktop visibility */
+
+/* Show on mobile, hide on desktop */
+.show-mobile {
+  display: none; /* Hidden by default */
+}
+
+@media (max-width: 768px) {
+  .show-mobile {
+    display: block; /* Visible only on mobile */
+  }
+}
+
+.hide-mobile {
+  display: block; /* Visible by default */
+}
+
+@media (max-width: 768px) {
+  .hide-mobile {
+    display: none; /* Hidden on mobile */
+  }
+}
+
+/* Show on desktop, hide on mobile */
+.show-desktop {
+  display: block; /* Visible by default */
+}
+.show-desktop-flex {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .show-desktop {
+    display: none; /* Hidden on mobile */
+  }
+}
+
+.hide-desktop,
+.hide-desktop-flex {
+  display: none; /* Hidden by default */
+}
+
+@media (max-width: 768px) {
+  .hide-desktop {
+    display: block; /* Visible only on mobile */
+  }
+  .hide-desktop-flex {
+    display: flex; /* Visible only on mobile */
+  }
+}

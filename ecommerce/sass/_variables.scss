@@ -1,0 +1,55 @@
+$text_black: #181c24;
+$form_border: #b5b7bc;
+$black: #172026;
+$brand: #1363df;
+$banner_black: #1b252c;
+
+// Define breakpoints
+$breakpoints: (
+  "mobile": 320px,
+  "tablet": 768px,
+  "desktop": 1024px,
+  "desktop-large": 1440px
+);
+
+// Mixin for handling responsiveness
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "⚠️ Breakpoint #{$breakpoint} not found!";
+  }
+}
+
+// Helper Mixins
+@mixin mobile {
+  @include respond-to("mobile") {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include respond-to("tablet") {
+    @content;
+  }
+}
+
+@mixin mobile-tablet {
+  @media (max-width: map-get($breakpoints, "tablet")) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: map-get($breakpoints, "desktop")) {
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media (min-width: map-get($breakpoints, "desktop-large")) {
+    @content;
+  }
+}
