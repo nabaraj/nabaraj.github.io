@@ -32,13 +32,30 @@ document.addEventListener("DOMContentLoaded", () => {
     filterSidebar.classList.remove("active");
   });
 
-  // Close sidebar when clicking outside
-  document.addEventListener("click", (event) => {
-    if (
-      !filterSidebar.contains(event.target) &&
-      !openFilterBtn.contains(event.target)
-    ) {
-      filterSidebar.classList.remove("active");
-    }
-  });
+ // Close Mobile Navigation & Filter Sidebar when clicking outside
+ document.addEventListener("click", (event) => {
+  if (
+    !mobileNavigation.contains(event.target) &&
+    !hamburger.contains(event.target)
+  ) {
+    mobileNavigation.classList.remove("active");
+  }
+
+  if (
+    !filterSidebar.contains(event.target) &&
+    !openFilterBtn.contains(event.target)
+  ) {
+    filterSidebar.classList.remove("active");
+  }
+});
+
+// Prevent clicks inside mobile navigation from triggering the outside click
+mobileNavigation.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+// Prevent clicks inside filter sidebar from triggering the outside click
+filterSidebar.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
 });
