@@ -360,12 +360,15 @@ header {
   }
   .mobile-navigation.active .nav-links {
     flex-wrap: wrap;
+    padding:0 20px;
   }
   .mobile-navigation.active .nav-links li {
     min-width: 100%;
   }
   .mobile-navigation.active .nav-links li a {
     color: #000;
+    padding-left: 0;
+    padding-right: 0;
   }
   .filters {
     margin-top: 1rem;
@@ -697,7 +700,6 @@ header {
 .banner-image img {
   height: 100%;
   opacity: 0;
-  cursor: pointer;
 }
 .banner-content {
   background-color: #1b252c;
