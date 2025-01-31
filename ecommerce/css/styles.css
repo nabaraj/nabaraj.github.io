@@ -31,13 +31,6 @@ picture {
   display: block;
 }
 
-/* Reset tables */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-}
-
 /* Reset form elements */
 input,
 textarea,
@@ -61,15 +54,6 @@ body {
   min-height: 100vh;
 }
 
-/* Remove animations and transitions for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-  }
-}
 body {
   font-size: 16px;
 }
@@ -89,8 +73,8 @@ body {
 .container {
   max-width: 1536px;
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 .flex {
@@ -165,7 +149,9 @@ body {
   padding-left: 4px;
   padding-right: 4px;
 }
-
+.pb-0{
+  padding-bottom: 0 !important;
+}
 .pb-32 {
   padding-bottom: 32px;
 }
@@ -196,7 +182,6 @@ body {
   visibility: hidden;
 }
 
-/* Utility classes for mobile and desktop visibility */
 /* Show on mobile, hide on desktop */
 .show-mobile {
   display: none; /* Hidden by default */
@@ -218,7 +203,7 @@ body {
 }
 /* Show on desktop, hide on mobile */
 .show-desktop {
-  display: block; /* Visible by default */
+  display: block;
 }
 
 .show-desktop-flex {
@@ -256,13 +241,11 @@ header {
   justify-content: space-between;
 }
 
-/* Logo */
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* Hamburger Menu Icon */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -298,7 +281,8 @@ header {
   height: 3px;
   background-color: #1363df;
 }
-.nav-links li.active:after, .nav-links li:hover:after {
+.nav-links li.active:after,
+.nav-links li:hover:after {
   transition: all 0.2s linear;
   content: "";
   display: block;
@@ -359,20 +343,20 @@ header {
     padding: 1rem;
   }
   .mobile-navigation {
-    display: none;
-  }
-  .mobile-navigation.active {
     display: block;
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
+    right: -75%;
     top: 0;
     background-color: #ffffff;
     color: #000000;
     z-index: 1000;
-    width: 100%;
+    width: 75%;
     overflow: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  .mobile-navigation.active {
+   transform: translateX(-100%);
   }
   .mobile-navigation.active .nav-links {
     flex-wrap: wrap;
@@ -386,8 +370,11 @@ header {
   .filters {
     margin-top: 1rem;
   }
+  .nav-links li:after{
+    display: none;
+  }
 }
-/* Navigation Links */
+
 /* Cart Section */
 .cart {
   position: relative;
@@ -413,6 +400,7 @@ header {
 @media (max-width: 768px) {
   .navbar {
     flex-wrap: wrap;
+    padding:1rem 15px;
   }
   .search-container {
     margin: 1rem 0;
