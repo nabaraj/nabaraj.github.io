@@ -1,356 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="title" property="og:title" content="Nabaraj Saha Web Developer">
-  <meta property="og:type" content="Resume">
-  <meta name="author" content="Nabaraj Saha" />
-  <meta name="description" property="og:description"
-    content="A competent professional with over 8 years of experience in Software Development.
-Strong Programming skills in designing and development of multi-tier applications using, HTML CSS3, JavaScript, ES6, JSON, jQuery, ReactJs, Angular(1.x), Redux, Node.JS, NPM, Web-Pack, Babel, JS-Test, karma-sinon-chai, JQuery-UI, Ajax, Bootstrap, Grunt, Gulp, SASS, Bower, Responsive UI.">
-  <meta name="image" property="og:image" content="http://nabaraj.github.io/img/screen.png">
-  <title>Resume Nabaraj Saha</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nabaraj Saha — Senior Frontend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B1220;
+    --bg-panel: #111B2E;
+    --line: #22304A;
+    --text: #E9E6DD;
+    --text-dim: #8D9AB3;
+    
+    /* Vibrant 5-color palette for Dark Mode */
+    --c1: #FF7B72; /* Coral */
+    --c2: #79C0FF; /* Blue */
+    --c3: #D2A8FF; /* Purple */
+    --c4: #5EEAD4; /* Teal */
+    --c5: #FFB757; /* Yellow/Amber */
+    
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --bg: #F3F1EA;
+      --bg-panel: #FFFFFF;
+      --line: #DAD5C6;
+      --text: #171A21;
+      --text-dim: #5C6472;
+      
+      /* Vibrant 5-color palette for Light Mode */
+      --c1: #D93036; 
+      --c2: #0969DA;
+      --c3: #8250DF;
+      --c4: #0F8A7C;
+      --c5: #B07000;
+    }
+  }
+  
+  :root[data-theme="dark"] {
+    --bg: #0B1220; --bg-panel: #111B2E; --line: #22304A;
+    --text: #E9E6DD; --text-dim: #8D9AB3;
+    --c1: #FF7B72; --c2: #79C0FF; --c3: #D2A8FF; --c4: #5EEAD4; --c5: #FFB757;
+  }
+  
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "Space Grotesk", system-ui, sans-serif;
+    font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--c3); color: #FFF; }
+  a { color: inherit; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 76px 0; }
+  section + section { border-top: 1px solid var(--line); }
+  
+  h2 {
+    font-size: 1.05rem; font-weight: 600; color: var(--text-dim);
+    margin: 0 0 34px; letter-spacing: .02em;
+  }
+  h2 .mono { margin-right: 10px; }
+  h2 .c1 { color: var(--c1); }
+  h2 .c2 { color: var(--c2); }
+  h2 .c3 { color: var(--c3); }
+  h2 .c4 { color: var(--c4); }
+  h2 .c5 { color: var(--c5); }
+  
+  p { color: var(--text); max-width: 64ch; }
+  .dim { color: var(--text-dim); }
 
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  /* ---- HERO / TERMINAL ---- */
+  .hero {
+    min-height: 92vh; display: flex; flex-direction: column; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 40%, color-mix(in srgb, var(--c3) 12%, transparent) 0%, transparent 40%),
+      radial-gradient(circle at 85% 60%, color-mix(in srgb, var(--c2) 12%, transparent) 0%, transparent 40%),
+      radial-gradient(circle at 50% 10%, color-mix(in srgb, var(--c5) 8%, transparent) 0%, transparent 35%),
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 10%, transparent 75%);
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 10%, transparent 75%);
+    opacity: 1; pointer-events: none;
+  }
+  .terminal {
+    position: relative; z-index: 1; width: 100%; max-width: 640px; margin: 0 auto;
+    background: var(--bg-panel); border: 1px solid var(--line); border-radius: 10px;
+    box-shadow: 0 30px 80px -30px rgba(0,0,0,.6);
+  }
+  .terminal-bar {
+    display: flex; align-items: center; gap: 7px; padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .terminal-bar span.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+  .terminal-bar span.dot:nth-child(1) { background: #E5645A; }
+  .terminal-bar span.dot:nth-child(2) { background: #E5B75A; }
+  .terminal-bar span.dot:nth-child(3) { background: #5AE58C; }
+  .terminal-title { margin-left: 8px; font-size: .78rem; font-weight: 600; background: linear-gradient(90deg, var(--c2), var(--c3)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .terminal-body { padding: 26px 22px 30px; font-size: .95rem; min-height: 220px; color: var(--c4); }
+  .terminal-body .line { white-space: pre-wrap; word-break: break-word; }
+  .caret { display: inline-block; width: 8px; height: 1.05em; background: var(--c5); vertical-align: -2px; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  .hero-sub { position: relative; z-index: 1; text-align: center; margin-top: 28px; color: var(--text-dim); font-size: .95rem; }
+  .hero-sub .loc { color: var(--c4); }
 
-  <!-- Custom fonts for this template -->
-  <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" />
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+  /* ---- ABOUT ---- */
+  .about-grid { display: flex; gap: 40px; flex-wrap: wrap; }
+  .about-grid p { flex: 1 1 320px; }
+  .facts { flex: 0 0 200px; font-size: .9rem; }
+  .facts dt { color: var(--text-dim); margin-top: 14px; }
+  .facts dt:first-child { margin-top: 0; }
+  .facts dd { margin: 2px 0 0; color: var(--text); }
 
-  <!-- Custom styles for this template -->
-  <link href="css/resume.min.css" rel="stylesheet" />
+  /* ---- EXPERIENCE TIMELINE ---- */
+  .timeline { border-left: 1px solid var(--line); margin-left: 6px; }
+  .job { position: relative; padding: 2px 0 34px 26px; }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px;
+    border-radius: 50%; background: var(--bg); border: 2px solid var(--c4);
+  }
+  
+  /* Cycle colors for timeline jobs */
+  .job:nth-child(3n+1)::before { border-color: var(--c2); }
+  .job:nth-child(3n+1) .job-org { color: var(--c2); }
+  .job:nth-child(3n+2)::before { border-color: var(--c3); }
+  .job:nth-child(3n+2) .job-org { color: var(--c3); }
+  .job:nth-child(3n+3)::before { border-color: var(--c5); }
+  .job:nth-child(3n+3) .job-org { color: var(--c5); }
+
+  .job-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+  .job-role { font-weight: 600; font-size: 1.02rem; }
+  .job-date { font-size: .82rem; color: var(--text-dim); white-space: nowrap; }
+  .job ul { margin: 10px 0 0; padding-left: 18px; color: var(--text-dim); font-size: .94rem; }
+  .job li { margin-bottom: 5px; }
+  .earlier { margin-top: 6px; padding-left: 26px; font-size: .9rem; color: var(--text-dim); }
+
+  /* ---- SKILLS ---- */
+  .skill-group { margin-bottom: 20px; }
+  .skill-group:last-child { margin-bottom: 0; }
+  .skill-label { font-size: .78rem; color: var(--text-dim); margin-bottom: 9px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-family: "JetBrains Mono", monospace; font-size: .82rem; padding: 5px 11px;
+    border: 1px solid var(--line); border-radius: 5px; color: var(--text);
+    transition: all .2s ease;
+  }
+  
+  /* Colorful Chips */
+  .chip:nth-child(5n+1) { border-color: var(--c1); color: var(--c1); background: color-mix(in srgb, var(--c1) 8%, transparent); }
+  .chip:nth-child(5n+1):hover { background: var(--c1); color: var(--bg-panel); }
+  .chip:nth-child(5n+2) { border-color: var(--c2); color: var(--c2); background: color-mix(in srgb, var(--c2) 8%, transparent); }
+  .chip:nth-child(5n+2):hover { background: var(--c2); color: var(--bg-panel); }
+  .chip:nth-child(5n+3) { border-color: var(--c3); color: var(--c3); background: color-mix(in srgb, var(--c3) 8%, transparent); }
+  .chip:nth-child(5n+3):hover { background: var(--c3); color: var(--bg-panel); }
+  .chip:nth-child(5n+4) { border-color: var(--c4); color: var(--c4); background: color-mix(in srgb, var(--c4) 8%, transparent); }
+  .chip:nth-child(5n+4):hover { background: var(--c4); color: var(--bg-panel); }
+  .chip:nth-child(5n+5) { border-color: var(--c5); color: var(--c5); background: color-mix(in srgb, var(--c5) 8%, transparent); }
+  .chip:nth-child(5n+5):hover { background: var(--c5); color: var(--bg-panel); }
+
+  /* ---- PROJECT ---- */
+  .project {
+    border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg-panel);
+    transition: transform .2s ease;
+  }
+  .project:hover { transform: translateY(-2px); }
+  .project-bar { padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 600; }
+  .project-body { padding: 24px; }
+  .project h3 { margin: 0 0 8px; font-size: 1.15rem; }
+  .project a.link { text-decoration: none; font-family: "JetBrains Mono", monospace; font-size: .85rem; font-weight: 500; }
+  .project a.link:hover { text-decoration: underline; }
+  .stack { margin-top: 14px; }
+  
+  /* Project color accents */
+  .project:nth-child(1) .project-bar { color: var(--c2); border-bottom-color: color-mix(in srgb, var(--c2) 30%, var(--line)); }
+  .project:nth-child(1) a.link { color: var(--c2); }
+  .project:nth-child(2) .project-bar { color: var(--c3); border-bottom-color: color-mix(in srgb, var(--c3) 30%, var(--line)); }
+  .project:nth-child(2) a.link { color: var(--c3); }
+
+  /* ---- EDUCATION ---- */
+  .edu-item { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-item .school { color: var(--text-dim); font-size: .9rem; }
+
+  /* ---- BEYOND ---- */
+  .beyond { border-left: 2px solid var(--c4); padding-left: 18px; }
+
+  /* ---- CONTACT / FOOTER ---- */
+  .contact-links { display: flex; flex-wrap: wrap; gap: 14px 26px; margin-top: 22px; }
+  .contact-links a {
+    font-family: "JetBrains Mono", monospace; font-size: .9rem; text-decoration: none;
+    color: var(--text); border-bottom: 1px solid var(--line); padding-bottom: 2px;
+    transition: color .15s ease, border-color .15s ease;
+  }
+  .contact-links a:nth-child(1):hover { color: var(--c1); border-color: var(--c1); }
+  .contact-links a:nth-child(2):hover { color: var(--c2); border-color: var(--c2); }
+  .contact-links a:nth-child(3):hover { color: var(--c3); border-color: var(--c3); }
+  
+  footer { padding: 32px 0 48px; text-align: center; font-size: .8rem; color: var(--text-dim); }
+
+  a:focus-visible, .chip:focus-visible { outline: 2px solid var(--c2); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caret { animation: none; opacity: 1; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 56px 0; }
+    .hero { min-height: auto; padding-top: 64px; }
+    .job-date { white-space: normal; }
+  }
+
+  /* ---- NAV ---- */
+  .nav {
+    position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: center;
+    transform: translateY(-120%); opacity: 0;
+    transition: transform .4s cubic-bezier(.22,.68,0,1), opacity .3s ease;
+    pointer-events: none;
+  }
+  .nav.is-visible { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav-inner {
+    display: flex; align-items: center; gap: 2px; margin-top: 14px;
+    padding: 6px; border: 1px solid var(--line); border-radius: 999px;
+    background: color-mix(in srgb, var(--bg-panel) 82%, transparent);
+    -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+    box-shadow: 0 18px 40px -20px rgba(0,0,0,.55);
+    max-width: calc(100vw - 32px); overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-name {
+    font-family: "JetBrains Mono", monospace; font-size: .78rem; color: var(--c5);
+    padding: 0 12px; white-space: nowrap; border-right: 1px solid var(--line); margin-right: 4px;
+  }
+  .nav a {
+    font-family: "JetBrains Mono", monospace; font-size: .78rem; text-decoration: none;
+    color: var(--text-dim); padding: 8px 13px; border-radius: 999px; white-space: nowrap;
+    transition: color .15s ease, background .15s ease;
+  }
+  .nav a:hover { color: var(--text); }
+  .nav a.active { color: var(--bg-panel); background: linear-gradient(90deg, var(--c2), var(--c3)); }
+  @media (max-width: 640px) { .nav-name { display: none; } }
+</style>
 </head>
+<body>
 
-<body id="page-top">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">
-      <span class="d-block d-lg-none">Nabaraj Saha</span>
-      <span class="d-none d-lg-block">
-        <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="" />
-      </span>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#interests">Interests</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#awards">Awards</a>
-        </li>
-      </ul>
+<section class="hero">
+  <div class="wrap">
+    <div class="terminal">
+      <div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="terminal-title mono">whoami.ts</span></div>
+      <div class="terminal-body mono" id="typeTarget"></div>
     </div>
-  </nav>
-
-  <div class="container-fluid p-0 mainContent">
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
-      <div class="w-100">
-        <h1 class="mb-0">
-          Nabaraj
-          <span class="text-primary">Saha</span>
-        </h1>
-        <div class="subheading mb-5">
-          9038850669 ·
-          <a href="nabaraj2k@gmail.com">nabaraj2k@gmail.com</a>
-        </div>
-        <p class="lead mb-5">
-        <ul>
-          <li>A competent professional with over 8 years of experience in Software Development.</li>
-
-          <li>Strong Programming skills in designing and development of multi-tier applications using, HTML CSS3,
-            JavaScript, ES6, JSON, jQuery, ReactJs, Vuejs, Angular(1.x), Redux, Node.JS, NPM, Web-Pack, Babel, JS-Test,
-            karma-sinon-chai, JQuery-UI, Ajax, Bootstrap, Grunt, Gulp, SASS, Bower, Responsive UI.</li>
-
-          <li>Ability to make HTML responsive site for Mobile, iPhone & iPad.</li>
-
-          <li>Experience in debugging and troubleshooting the existing code.</li>
-
-          <li>Ability to create design mockup for website using photoshop.</li>
-
-          <li>Hands on experience in source control tools GIT, GitHub, GitLab, SVN, and Tortoise hg repositories.</li>
-
-          <li>Hands on experience in JIRA, Confluence, WIKI and Basecamp tools.</li>
-
-          <li>Involved in all phase of the Software Development Life Cycle (SDLC) such as requirements
-            gathering, design, development, testing, implementation, and deployment.</li>
-
-          <li>Working knowledge with php CMS(WORDPRESS, Joomla), Bootstrap.</li>
-
-          <li>Good Experience in working with agile methodology.</li>
-        </ul>
-        </p>
-        <div class="social-icons">
-          <a href="https://www.linkedin.com/in/nabarajsaha/">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a href="https://github.com/nabaraj">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://twitter.com/nabaraj2k">
-            <i class="fab fa-twitter"></i>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <hr class="m-0" />
-
-    <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
-      <div class="w-100">
-        <h2 class="mb-5">Experience</h2>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Application developer</h3>
-            <div class="subheading mb-3">IBM</div>
-            <p>Working as a web developer using skills javascript, nodejs, ReactJs, Vuejs, redux, express, scss, html
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">February 2020 - Present</span>
-          </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Technical Lead- Product Development</h3>
-            <div class="subheading mb-3">Harman Connected Services Corporation India Pvt. Ltd.</div>
-            <p>
-              Harman Connected Services, often abbreviated to HCS, an American subsidiary of Samsung Electronics through
-              Harman International Industries. The Connected Services Division supplies software services to the mobile
-              communications industry. HCS is a technologies company leader in Cloud, Mobile, Analytics Capabilities,
-              Design, and Software Services. Harman has a workforce of approximately 30,000 people across the Americas,
-              Europe, and Asia.
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">August 2018 - February 2020</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">SENIOR ASSOCIATE EXPERIENCE TECHNOLOGY</h3>
-            <div class="subheading mb-3">SAPIENT CORPORATION</div>
-            <p>
-              Sapient is a marketing and consulting company that provides business, marketing, and technology services
-              to clients. The company operates three divisions, SapientRazorfish, Sapient Global Markets and Sapient
-              Government Services
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">December 2015 - August 2018</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">UI Developer</h3>
-            <div class="subheading mb-3">CIGNEX Datamatics</div>
-            <p>
-              CIGNEX Datamatics, a subsidiary of Datamatics Global Services Ltd., is a Michigan based, global, pure-play
-              consulting company offering solutions, services and platforms in Open Source, Cloud and Automation. Since
-              2000, CIGNEX Datamatics has been Making Open Source Work® using open standards platforms and tools that
-              integrate with existing systems to achieve unparalleled results and leveraging its Adopt-Open-Elevate™
-              execution framework to mitigate any risk.
-
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">May 2018 - November 2018</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-          <div class="resume-content">
-            <h3 class="mb-0">Front end develper</h3>
-            <div class="subheading mb-3">Capital Numbers</div>
-            <p>
-              Capital Numbers are based in India and provide White Label Web Design and Development, Mobile Apps and
-              Digital Marketing Services. We're an ISO 9001 Certified, D&B Registered and a Certified Google Partner,
-              which basically means we have the big thumbs up from the internet.
-
-            </p>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">September 2012 - May 2015</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="m-0" />
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
-      <div class="w-100">
-        <h2 class="mb-5">Education</h2>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Sikkim Manipal University</h3>
-            <div class="subheading mb-3">Master of Computer Applications</div>
-            <div>Computer Science</div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">August 2011 - May 2013</span>
-          </div>
-        </div>
-
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-          <div class="resume-content">
-            <h3 class="mb-0">Sikkim Manipal University</h3>
-            <div class="subheading mb-3">Bachelor of Computer Applications</div>
-            <div>Computer Science</div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">August 2009 - May 2011</span>
-          </div>
-        </div>
-        <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-          <div class="resume-content">
-            <h3 class="mb-0">MIT Aurangabad</h3>
-            <div class="subheading mb-3">Diploma in computer technology</div>
-            <div>Computer Science</div>
-          </div>
-          <div class="resume-date text-md-right">
-            <span class="">August 2009 - May 2011</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <hr class="m-0" />
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
-      <div class="w-100">
-        <h2 class="mb-5">Skills</h2>
-
-        <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-        <ul class="list-inline dev-icons">
-          <li class="list-inline-item" title="HTML5">
-            <i class="fab fa-html5"></i>
-          </li>
-          <li class="list-inline-item" title="CSS3">
-            <i class="fab fa-css3-alt"></i>
-          </li>
-          <li class="list-inline-item" title="javascript">
-            <i class="fab fa-js-square"></i>
-          </li>
-
-          <li class="list-inline-item" title="ReactJs">
-            <i class="fab fa-react"></i>
-          </li>
-          <li class="list-inline-item" title="vue">
-            <i class="fab fa-vuejs"></i>
-          </li>
-          <li class="list-inline-item" title="Angular">
-            <i class="fab fa-angular"></i>
-          </li>
-          <li class="list-inline-item" title="nodejs">
-            <i class="fab fa-node-js"></i>
-          </li>
-          <li class="list-inline-item" title="AWS">
-            <i class="fab fa-aws"></i>
-          </li>
-          <li class="list-inline-item" title="SCSS">
-            <i class="fab fa-sass"></i>
-          </li>
-          <li class="list-inline-item" title="Wordpress">
-            <i class="fab fa-wordpress"></i>
-          </li>
-          <li class="list-inline-item">
-            <i class="fab fa-npm"></i>
-          </li>
-        </ul>
-
-        <!-- <div class="subheading mb-3">Workflow</div>
-          <ul class="fa-ul mb-0">
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Mobile-First, Responsive Design
-            </li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Browser Testing &amp; Debugging
-            </li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Cross Functional Teams
-            </li>
-            <li>
-              <i class="fa-li fa fa-check"></i>
-              Agile Development &amp; Scrum
-            </li>
-          </ul> -->
-      </div>
-    </section>
-
-    <hr class="m-0" />
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests">
-      <div class="w-100">
-        <h2 class="mb-5">Interests</h2>
-        <p>
-          Apart from being a web developer, I enjoy most of my time in doing wokout at gym or at home, playing chess, passing time with family, listning music.
-        </p>
-      </div>
-    </section>
-
-    <hr class="m-0" />
-
-    <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
-      <div class="w-100">
-        <h2 class="mb-5">Awards &amp; Certifications</h2>
-        <ul class="fa-ul mb-0">
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Consider it done in Sapient
-          </li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Participate in XT Summit 2017 in Sapient
-          </li>
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Employee of Month in Capital Numbers
-          </li>
-
-          <li>
-            <i class="fa-li fa fa-trophy text-warning"></i>
-            Participate - Angular attack Hackathon 2018
-          </li>
-        </ul>
-      </div>
-    </section>
+    <p class="hero-sub">Building for the web since 2011, from <span class="loc">Bengaluru, India</span></p>
   </div>
+</section>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<nav class="nav" id="siteNav" aria-label="Section navigation">
+  <div class="nav-inner">
+    <span class="nav-name">NS</span>
+    <a href="#about" data-target="about">About</a>
+    <a href="#experience" data-target="experience">Experience</a>
+    <a href="#skills" data-target="skills">Skills</a>
+    <a href="#project" data-target="project">Projects</a>
+    <a href="#education" data-target="education">Education</a>
+    <a href="#beyond" data-target="beyond">Beyond</a>
+    <a href="#contact" data-target="contact">Contact</a>
+  </div>
+</nav>
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<section id="about">
+  <div class="wrap">
+    <h2><span class="mono c1">01</span>About</h2>
+    <div class="about-grid">
+      <p>Nabaraj designs and ships enterprise-scale frontends — the kind with thousands of daily users, strict accessibility bars, and teams spread across time zones. Fourteen years in, the interest hasn't shifted from the first line of React he ever shipped: components that hold up under real traffic, and architecture that a new teammate can understand by Friday.</p>
+      <dl class="facts">
+        <dt>Focus</dt><dd>Frontend architecture, design systems, performance</dd>
+        <dt>Core stack</dt><dd>React, TypeScript, GraphQL</dd>
+        <dt>Also builds with</dt><dd>AI-assisted tooling — Copilot, ChatGPT</dd>
+      </dl>
+    </div>
+  </div>
+</section>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/resume.min.js"></script>
+<section id="experience">
+  <div class="wrap">
+    <h2><span class="mono c2">02</span>Experience</h2>
+    <div class="timeline">
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-role">Senior Software Engineer, Frontend</span> · <span class="job-org">SberBank</span></div>
+          <div class="job-date mono">Feb 2025 — Present</div>
+        </div>
+        <ul>
+          <li>Develops enterprise fintech applications using React, TypeScript and GraphQL.</li>
+          <li>Designs reusable UI components and scalable frontend architecture.</li>
+          <li>Uses AI coding tools to accelerate implementation, debugging and documentation.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-role">Lead Experience Engineer, Frontend</span> · <span class="job-org">Publicis Sapient</span></div>
+          <div class="job-date mono">Jan 2022 — Jan 2025</div>
+        </div>
+        <ul>
+          <li>Led development of enterprise React and TypeScript applications.</li>
+          <li>Designed reusable component libraries and shared frontend modules.</li>
+          <li>Mentored engineers and established frontend engineering best practices.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-role">Frontend Engineer, Full Stack Exposure</span> · <span class="job-org">IBM</span></div>
+          <div class="job-date mono">Feb 2020 — Jan 2022</div>
+        </div>
+        <ul>
+          <li>Built enterprise applications using React, Vue.js and TypeScript.</li>
+          <li>Developed backend APIs using Node.js and Express.js.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <div class="job-head">
+          <div><span class="job-role">Technical Lead, Frontend</span> · <span class="job-org">HARMAN</span></div>
+          <div class="job-date mono">Aug 2018 — Feb 2020</div>
+        </div>
+        <ul>
+          <li>Led frontend architecture and implementation for enterprise products.</li>
+          <li>Built Backend-for-Frontend services using Node.js.</li>
+        </ul>
+      </div>
+      <div class="earlier">Earlier: Senior Frontend roles at Sapient, CIGNEX, Capital Numbers and Indus Net Technologies.</div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2><span class="mono c3">03</span>Skills</h2>
+    <div class="skill-group">
+      <div class="skill-label">Languages &amp; frameworks</div>
+      <div class="chips">
+        <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span>
+        <span class="chip">Next.js</span><span class="chip">Vue.js</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Data &amp; APIs</div>
+      <div class="chips">
+        <span class="chip">GraphQL</span><span class="chip">REST APIs</span><span class="chip">Apollo Client</span><span class="chip">TanStack Query</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">State management</div>
+      <div class="chips"><span class="chip">Zustand</span><span class="chip">Redux Toolkit</span></div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Architecture</div>
+      <div class="chips">
+        <span class="chip">Microfrontends</span><span class="chip">Design Systems</span><span class="chip">Frontend Architecture</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-label">Quality &amp; tooling</div>
+      <div class="chips">
+        <span class="chip">Jest</span><span class="chip">React Testing Library</span><span class="chip">Cypress</span>
+        <span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">CI/CD</span><span class="chip">Azure DevOps</span><span class="chip">Git</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <h2><span class="mono c4">04</span>Featured projects</h2>
+    <div class="project">
+      <div class="project-bar mono">paper-trading-screener-ai.vercel.app</div>
+      <div class="project-body">
+        <h3>AI-Powered Paper Trading Screener</h3>
+        <p class="dim">A full-stack AI-powered stock screening application, built with reusable hooks, modular architecture, caching and debounced search — tuned for scalability, responsiveness and performance.</p>
+        <div class="stack chips">
+          <span class="chip">Next.js</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">AI APIs</span>
+        </div>
+        <p style="margin-top:16px;"><a class="link" href="https://paper-trading-screener-ai.vercel.app/" target="_blank" rel="noopener">Visit the live app ↗</a></p>
+      </div>
+    </div>
+    <div class="project" style="margin-top:22px;">
+      <div class="project-bar mono">ai-code-explainer-nabaraj.vercel.app</div>
+      <div class="project-body">
+        <h3>Code Explainer AI</h3>
+        <p class="dim">Pastes code, gets it explained in plain English — with a fast mode for quick answers and a detailed mode for structured breakdowns, streamed to the screen as it's generated. Hash-based caching skips repeat API calls, and every explanation gets a shareable link that works without login.</p>
+        <div class="stack chips">
+          <span class="chip">Next.js</span><span class="chip">Monaco Editor</span><span class="chip">Tailwind CSS</span><span class="chip">Groq API</span><span class="chip">MongoDB</span>
+        </div>
+        <p style="margin-top:16px;"><a class="link" href="https://ai-code-explainer-nabaraj.vercel.app/" target="_blank" rel="noopener">Visit the live app ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <h2><span class="mono c5">05</span>Education &amp; certification</h2>
+    <div class="edu-item"><span>Master of Computer Applications (MCA)</span><span class="school">Sikkim Manipal University</span></div>
+    <div class="edu-item"><span>Bachelor of Computer Applications (BCA)</span><span class="school">Sikkim Manipal University</span></div>
+    <div class="edu-item"><span>Diploma</span><span class="school">MIT Aurangabad</span></div>
+    <div class="edu-item"><span>Microsoft Certified: Azure Developer Associate</span><span class="school">Microsoft</span></div>
+  </div>
+</section>
+
+<section id="beyond">
+  <div class="wrap">
+    <h2><span class="mono c1">06</span>Beyond the code</h2>
+    <div class="beyond">
+      <p>Nabaraj also runs <strong>Shine Bright Tales</strong>, a YouTube channel of animated storytelling for kids and families — Pixar-style AI-generated visuals paired with narrated stories on life lessons, history and science.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <h2><span class="mono c2">07</span>Get in touch</h2>
+    <p class="dim">Based in Bengaluru, India — open to conversations about frontend architecture, AI-assisted engineering, or the occasional animated story.</p>
+    <div class="contact-links">
+      <a href="mailto:nabaraj.saha0601@gmail.com">nabaraj.saha0601@gmail.com</a>
+      <a href="https://linkedin.com/in/nabarajsaha" target="_blank" rel="noopener">linkedin.com/in/nabarajsaha</a>
+      <a href="https://github.com/nabaraj" target="_blank" rel="noopener">github.com/nabaraj</a>
+    </div>
+  </div>
+</section>
+
+<footer>Designed &amp; built by Nabaraj Saha</footer>
+
+<script>
+(function(){
+  var target = document.getElementById('typeTarget');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var script = [
+    {t:"const engineer = {\n  name: ", d:0},
+    {t:"'Nabaraj Saha'", cls:"a", d:0},
+    {t:",\n  role: ", d:0},
+    {t:"'Senior Frontend Engineer'", cls:"b", d:0},
+    {t:",\n  experience: ", d:0},
+    {t:"14", cls:"a", d:0},
+    {t:", // years\n  stack: [", d:0},
+    {t:"'React'", cls:"b", d:0},
+    {t:", ", d:0},
+    {t:"'TypeScript'", cls:"b", d:0},
+    {t:", ", d:0},
+    {t:"'GraphQL'", cls:"b", d:0},
+    {t:"],\n  approach: ", d:0},
+    {t:"'AI-assisted development'", cls:"a", d:0},
+    {t:"\n};", d:0}
+  ];
+  var full = script.map(function(s){return s.t;}).join('');
+
+  if(reduced){
+    target.innerHTML = '<span class="line">'+full.replace(/\n/g,'<br>')+'<span class="caret"></span></span>';
+    return;
+  }
+
+  var wrapper = document.createElement('span');
+  wrapper.className = 'line';
+  target.appendChild(wrapper);
+  var caret = document.createElement('span');
+  caret.className = 'caret';
+  target.appendChild(caret);
+
+  var chars = full.split('');
+  var i = 0;
+  function tick(){
+    if(i < chars.length){
+      var c = chars[i];
+      wrapper.innerHTML += (c === '\n') ? '<br>' : c;
+      i++;
+      var delay = c === '\n' ? 90 : (18 + Math.random()*26);
+      setTimeout(tick, delay);
+    }
+  }
+  setTimeout(tick, 350);
+})();
+
+(function(){
+  var nav = document.getElementById('siteNav');
+  var hero = document.querySelector('.hero');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var sections = links.map(function(l){ return document.getElementById(l.dataset.target); });
+
+  var heroObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      nav.classList.toggle('is-visible', !entry.isIntersecting);
+    });
+  }, { threshold: 0, rootMargin: '-80% 0px 0px 0px' });
+  heroObserver.observe(hero);
+
+  var sectionObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        var id = entry.target.id;
+        links.forEach(function(l){ l.classList.toggle('active', l.dataset.target === id); });
+      }
+    });
+  }, { threshold: 0, rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(function(s){ if(s) sectionObserver.observe(s); });
+})();
+</script>
+
 </body>
-
 </html>
